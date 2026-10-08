@@ -17,6 +17,7 @@ Updated at the end of every task. Source of truth for sequencing stays `PROJECT.
   - [x] ToastContainer wiring + Toastify CSS overrides (radius 0, no shadow, tokens)
 - [x] Fix leftover `BagPage` name in shop placeholder (absorbed by rewrite above)
 - [x] About page (4 sections, copy inline per convention, screenshot placeholders)
+- [x] Contact page (InfoSection + FormSection with dead submit → toast, guidance inline)
 
 ## Next (in phase order, one phase at a time with review)
 
