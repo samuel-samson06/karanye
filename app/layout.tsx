@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bodoni_Moda, Geist, Geist_Mono, Hanken_Grotesk } from "next/font/google";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
+import ToastHost from "@/components/layout/ToastHost";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <div className="flex flex-1 flex-col">{children}</div>
         <Footer />
+        <ToastHost />
       </body>
     </html>
   );
