@@ -9,7 +9,7 @@ export default function Guarantee() {
       aria-label="Made to measure guarantee"
       className="border-y border-platinum bg-linen"
     >
-      <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-10 md:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-16">
+      <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-10 md:px-8 md:py-14 lg:flex-row lg:items-center lg:justify-between lg:px-16">
         <div className="max-w-2xl">
           <p className="text-label-md text-muted">{guaranteeCopy.eyebrow}</p>
           <h2 className="mt-3 text-headline-md text-ink">{guaranteeCopy.title}</h2>
@@ -17,7 +17,7 @@ export default function Guarantee() {
         </div>
         <Link
           href={guaranteeCopy.ctaHref}
-          className="inline-flex h-[52px] min-h-11 shrink-0 items-center justify-center border border-ink px-8 text-label-md text-ink transition-colors hover:bg-ink hover:text-canvas"
+          className="inline-flex h-13 shrink-0 items-center justify-center border border-ink px-8 text-label-md sm:self-start lg:self-auto text-ink transition-colors hover:bg-ink hover:text-canvas"
         >
           {guaranteeCopy.ctaLabel}
         </Link>

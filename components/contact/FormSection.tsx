@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 const enquiryTypes = ["General", "Order", "Size & Fit", "Made to Measure", "Other"];
 
 const inputClass =
-  "h-[52px] min-h-11 w-full border border-hairline bg-canvas px-4 text-body-md text-ink placeholder:text-muted focus:border-crimson focus:outline-none";
+  "h-13 w-full border border-hairline bg-canvas px-4 text-body-md text-ink placeholder:text-muted focus:border-crimson focus:outline-none";
 
 // Correspondence form: UI only. Submit is dead — it fires a placeholder toast
 // and keeps the entered values. Real sending (POST /api/contact + Resend)
@@ -19,12 +19,9 @@ export default function FormSection() {
   };
 
   return (
-    <div className="border border-platinum bg-canvas p-6 md:p-10">
+    <div className="border border-platinum bg-canvas p-5 md:p-10">
       <p className="text-label-md text-muted">Bespoke Dispatch</p>
-      <h2
-        className="mt-3 text-headline-lg text-ink"
-        style={{ fontFamily: "var(--font-bodoni)" }}
-      >
+      <h2 className="mt-3 text-headline-lg text-ink">
         Initiate Correspondence
       </h2>
       <p className="mt-3 text-body-md text-muted">
@@ -143,7 +140,7 @@ export default function FormSection() {
 
         <button
           type="submit"
-          className="inline-flex h-[52px] min-h-11 items-center justify-center gap-3 bg-crimson px-8 text-label-md text-canvas transition-colors hover:bg-crimson-deep"
+          className="inline-flex h-13 w-full items-center justify-center gap-3 bg-crimson px-8 sm:w-auto sm:self-start text-label-md text-canvas transition-colors hover:bg-crimson-deep"
         >
           Send Message
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -151,8 +148,8 @@ export default function FormSection() {
           </svg>
         </button>
 
-        <p className="flex items-center gap-2 text-label-md text-muted">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <p className="flex items-start gap-2 text-label-md text-muted">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" className="mt-px shrink-0">
             <rect x="2" y="5" width="8" height="6" stroke="currentColor" strokeWidth="1" />
             <path d="M4 5V3.5a2 2 0 0 1 4 0V5" stroke="currentColor" strokeWidth="1" />
           </svg>

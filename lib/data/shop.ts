@@ -3,6 +3,8 @@
 // Karanyé catalogue data. Postgres-backed search/filter/sort arrives in Phase 2;
 // until then filtering is client-side over this list (§13 migration noted).
 
+import { placeholderImage, placeholderImageAlt } from "@/lib/data/home";
+
 export type ShopCategory = "gowns" | "outerwear" | "separates" | "corsetry";
 
 export type ShopStatus = "made_to_order" | "limited" | "sold_out";
@@ -58,11 +60,12 @@ export const shopSorts: { value: string; label: string }[] = [
   { value: "availability", label: "Availability" },
 ];
 
-const img = (id: string, alt: string): ShopImage => ({
-  // TODO(content): replace with brand photography
-  src: `https://images.unsplash.com/${id}?q=80&w=800&auto=format&fit=crop`,
-  alt,
-});
+// One brand photograph per product until real catalogue imagery exists.
+// The array shape stays so multi-image products drop straight in later.
+// TODO(content): replace with each product's own photography.
+const placeholderImages: ShopImage[] = [
+  { src: placeholderImage, alt: placeholderImageAlt },
+];
 
 export const shopProducts: ShopProduct[] = [
   {
@@ -76,10 +79,7 @@ export const shopProducts: ShopProduct[] = [
     palette: "Crimson",
     sizes: ["6", "8", "10", "12", "14"],
     addedIndex: 9,
-    images: [
-      img("photo-1572804013309-59a88b7e92f1", "Model wearing a sculptural crimson bodice gown"),
-      img("photo-1539109136881-3be0616acf4b", "Side view of a sculptural crimson gown"),
-    ],
+    images: placeholderImages,
   },
   {
     slug: "amina-draped-silk-trench",
@@ -92,10 +92,7 @@ export const shopProducts: ShopProduct[] = [
     palette: "Bronze",
     sizes: ["8", "10", "12", "14", "16"],
     addedIndex: 8,
-    images: [
-      img("photo-1591369822096-ffd140ec948f", "Model wearing a draped bronze silk trench"),
-      img("photo-1445205170230-053b83016050", "Draped silk trench garment detail"),
-    ],
+    images: placeholderImages,
   },
   {
     slug: "moremi-cape-blazer",
@@ -108,10 +105,7 @@ export const shopProducts: ShopProduct[] = [
     palette: "Noir",
     sizes: ["8", "10", "12"],
     addedIndex: 7,
-    images: [
-      img("photo-1581044777550-4cfa60707c03", "Model wearing a black split-sleeve cape blazer"),
-      img("photo-1509631179647-0177331693ae", "Tailored black ensemble detail"),
-    ],
+    images: placeholderImages,
   },
   {
     slug: "ogechi-pleated-ensemble",
@@ -124,10 +118,7 @@ export const shopProducts: ShopProduct[] = [
     palette: "Ivory",
     sizes: ["6", "8", "10", "12", "14", "16", "18"],
     addedIndex: 6,
-    images: [
-      img("photo-1529139574466-a303027c1d8b", "Model wearing an ivory pleated two-piece ensemble"),
-      img("photo-1558769132-cb1aea458c5e", "Knife pleat fabric close-up"),
-    ],
+    images: placeholderImages,
   },
   {
     slug: "idia-high-neck-peplum",
@@ -140,11 +131,7 @@ export const shopProducts: ShopProduct[] = [
     palette: "Crimson",
     sizes: ["6", "8", "10", "12"],
     addedIndex: 5,
-    images: [
-      img("photo-1515886657613-9f3515b0c78f", "Model wearing a crimson high-neck peplum top"),
-      img("photo-1469334031218-e382a71b716b", "Brocade peplum editorial detail"),
-      img("photo-1490481651871-ab68de25d43d", "High-neck peplum alternate view"),
-    ],
+    images: placeholderImages,
   },
   {
     slug: "bamigbo-floor-kaftan",
@@ -157,10 +144,7 @@ export const shopProducts: ShopProduct[] = [
     palette: "Forest",
     sizes: ["10", "12", "14"],
     addedIndex: 4,
-    images: [
-      img("photo-1483985988355-763728e1935b", "Model wearing a deep green floor-length kaftan"),
-      img("photo-1441986300917-64674bd600d8", "Kaftan silk drape detail"),
-    ],
+    images: placeholderImages,
   },
   {
     slug: "kemi-column-gown",
@@ -173,10 +157,7 @@ export const shopProducts: ShopProduct[] = [
     palette: "Crimson",
     sizes: ["6", "8", "10", "12", "14"],
     addedIndex: 3,
-    images: [
-      img("photo-1539109136881-3be0616acf4b", "Model wearing a crimson satin column gown"),
-      img("photo-1572804013309-59a88b7e92f1", "Column gown train detail"),
-    ],
+    images: placeholderImages,
   },
   {
     slug: "alafia-tailored-pant",
@@ -189,10 +170,7 @@ export const shopProducts: ShopProduct[] = [
     palette: "Noir",
     sizes: ["8", "10", "12", "14", "16"],
     addedIndex: 2,
-    images: [
-      img("photo-1509631179647-0177331693ae", "Model wearing high-waisted tailored black trousers"),
-      img("photo-1581044777550-4cfa60707c03", "Tailored trouser alternate view"),
-    ],
+    images: placeholderImages,
   },
   {
     slug: "sisi-structured-corset",
@@ -205,10 +183,7 @@ export const shopProducts: ShopProduct[] = [
     palette: "Crimson",
     sizes: ["6", "8", "10", "12"],
     addedIndex: 1,
-    images: [
-      img("photo-1515886657613-9f3515b0c78f", "Back view of a crimson structured corset with lacing"),
-      img("photo-1558769132-cb1aea458c5e", "Corset boning close-up"),
-    ],
+    images: placeholderImages,
   },
 ];
 

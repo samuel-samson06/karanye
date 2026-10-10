@@ -15,7 +15,7 @@ export default function Craft() {
             alt={craftCopy.imageAAlt}
             fill
             sizes="(min-width: 1024px) 55vw, (min-width: 768px) 60vw, 100vw"
-            className="object-cover"
+            className="object-cover object-[center_25%]"
           />
         </div>
         <div className="relative aspect-square w-full overflow-hidden border border-platinum md:col-span-3 md:self-end lg:col-span-5 lg:aspect-[4/3] lg:self-start">
@@ -24,7 +24,7 @@ export default function Craft() {
             alt={craftCopy.imageBAlt}
             fill
             sizes="(min-width: 1024px) 35vw, (min-width: 768px) 36vw, 100vw"
-            className="object-cover"
+            className="object-cover object-[center_25%]"
           />
         </div>
         <div className="md:col-span-6 lg:col-span-5 lg:self-end">

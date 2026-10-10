@@ -83,12 +83,9 @@ export default function ShopPage() {
 
   return (
     <main className="bg-canvas">
-      <div className="mx-auto max-w-7xl px-5 pt-14 md:px-8 lg:px-16 lg:pt-20">
+      <div className="mx-auto max-w-7xl px-5 pt-14 md:px-8 md:pt-20 lg:px-16">
         <p className="text-label-md text-muted">{shopCopy.eyebrow}</p>
-        <h1
-          className="mt-3 text-display-lg text-ink"
-          style={{ fontFamily: "var(--font-bodoni)" }}
-        >
+        <h1 className="mt-3 text-display-lg text-ink">
           {shopCopy.title}
         </h1>
         <p className="mt-4 max-w-2xl text-body-md text-muted">{shopCopy.body}</p>
@@ -112,7 +109,7 @@ export default function ShopPage() {
             <button
               type="button"
               onClick={resetFilters}
-              className="mt-6 inline-flex h-[52px] min-h-11 items-center justify-center border border-ink px-8 text-label-md text-ink transition-colors hover:bg-ink hover:text-canvas"
+              className="mt-6 inline-flex h-13 items-center justify-center border border-ink px-8 text-label-md text-ink transition-colors hover:bg-ink hover:text-canvas"
             >
               {shopCopy.resetLabel}
             </button>
@@ -144,7 +141,7 @@ export default function ShopPage() {
               <button
                 type="button"
                 onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
-                className="inline-flex h-[52px] min-h-11 items-center justify-center border border-ink px-8 text-label-md text-ink transition-colors hover:bg-ink hover:text-canvas"
+                className="inline-flex h-13 items-center justify-center border border-ink px-8 text-label-md text-ink transition-colors hover:bg-ink hover:text-canvas"
               >
                 {shopCopy.loadMoreLabel}
               </button>

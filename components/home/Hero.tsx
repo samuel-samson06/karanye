@@ -15,7 +15,7 @@ export default function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="object-cover object-[center_25%]"
         />
         {/* Flat ink wash for text contrast; no blur so the garment stays sharp. */}
         <div aria-hidden="true" className="absolute inset-0 bg-ink/40" />

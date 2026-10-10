@@ -33,7 +33,7 @@ export default function InfoSection() {
         <p className="text-label-md text-muted">Atelier Salons &amp; Fitting Chambers</p>
         <ul className="mt-6 flex flex-col gap-4">
           <li className="border border-platinum bg-linen p-6">
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
               <h2 className="text-headline-sm text-ink">Victoria Island Atelier &amp; Archive</h2>
               <span className="shrink-0 border border-platinum px-2 py-1 text-label-sm text-muted">
                 Primary
@@ -47,7 +47,7 @@ export default function InfoSection() {
             <p className="mt-3 text-label-md text-muted">Mon–Sat, 10:00–18:00 · By appointment</p>
           </li>
           <li className="border border-platinum bg-linen p-6">
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
               <h2 className="text-headline-sm text-ink">Mayfair Private Client Suite</h2>
               <span className="shrink-0 border border-platinum px-2 py-1 text-label-sm text-muted">
                 Salon

@@ -34,7 +34,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <article className="flex flex-col">
+    <article className="flex h-full flex-col">
       <div className="relative aspect-[3/4] w-full overflow-hidden border border-platinum">
         <Link
           href={`/products/${product.slug}`}
@@ -46,7 +46,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               src={current.src}
               alt={current.alt}
               fill
-              sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
+              sizes="(min-width: 1024px) 30vw, 50vw"
               className="object-cover"
             />
           )}
@@ -55,8 +55,8 @@ export default function ProductCard({ product }: ProductCardProps) {
         <span
           className={
             product.status === "sold_out"
-              ? "absolute top-3 left-3 border border-hairline bg-canvas px-3 py-2 text-label-md text-muted"
-              : "absolute top-3 left-3 border border-crimson bg-canvas px-3 py-2 text-label-md text-crimson"
+              ? "absolute top-2 left-2 max-w-[calc(100%-1rem)] border border-hairline bg-canvas px-2 py-1 text-label-md text-muted md:top-3 md:left-3 md:px-3 md:py-2"
+              : "absolute top-2 left-2 max-w-[calc(100%-1rem)] border border-crimson bg-canvas px-2 py-1 text-label-md text-crimson md:top-3 md:left-3 md:px-3 md:py-2"
           }
         >
           {statusLabel[product.status]}
@@ -68,7 +68,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               type="button"
               onClick={showPrev}
               aria-label={`Previous image of ${product.name}`}
-              className="absolute top-1/2 left-3 flex min-h-11 min-w-11 -translate-y-1/2 items-center justify-center border border-platinum bg-canvas text-ink"
+              className="absolute top-1/2 left-3 hidden min-h-11 min-w-11 -translate-y-1/2 items-center justify-center border border-platinum bg-canvas text-ink md:flex"
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1" />
@@ -78,7 +78,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               type="button"
               onClick={showNext}
               aria-label={`Next image of ${product.name}`}
-              className="absolute top-1/2 right-3 flex min-h-11 min-w-11 -translate-y-1/2 items-center justify-center border border-platinum bg-canvas text-ink"
+              className="absolute top-1/2 right-3 hidden min-h-11 min-w-11 -translate-y-1/2 items-center justify-center border border-platinum bg-canvas text-ink md:flex"
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1" />
@@ -88,15 +88,15 @@ export default function ProductCard({ product }: ProductCardProps) {
         )}
       </div>
 
-      <Link href={`/products/${product.slug}`} className="mt-4 block">
+      <Link href={`/products/${product.slug}`} className="mt-3 block md:mt-4">
         <h3 className="text-headline-sm text-ink">{product.name}</h3>
       </Link>
       <p className="mt-1 text-body-sm text-muted">{product.fabricLine}</p>
-      <p className="mt-2 text-label-md text-ink">{formatNaira(product.priceKobo)}</p>
+      <p className="mt-2 mb-4 text-label-md text-ink">{formatNaira(product.priceKobo)}</p>
       <button
         type="button"
         onClick={notifyComingSoon}
-        className="mt-4 inline-flex h-[52px] min-h-11 items-center justify-center bg-crimson px-8 text-label-md text-canvas transition-colors hover:bg-crimson-deep"
+        className="mt-auto inline-flex h-13 w-full items-center justify-center bg-crimson px-4 text-label-md text-canvas transition-colors hover:bg-crimson-deep"
       >
         Add to Bag
       </button>

@@ -5,12 +5,9 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="border-t border-platinum bg-canvas">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-10 px-5 py-14 md:grid-cols-4 md:px-8 lg:px-16">
-        <div>
-          <p
-            className="text-headline-md tracking-[0.08em]"
-            style={{ fontFamily: "var(--font-bodoni)" }}
-          >
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-x-6 gap-y-10 px-5 py-14 md:grid-cols-4 md:gap-8 md:px-8 lg:px-16">
+        <div className="col-span-2 md:col-span-1">
+          <p className="text-headline-md tracking-[0.08em]">
             KARANYÉ
           </p>
           {/* TODO(content): confirm footer tagline */}
@@ -21,20 +18,20 @@ export default function Footer() {
 
         <nav aria-label="Shop">
           <p className="text-label-md text-ink">Shop</p>
-          <ul className="mt-4 flex flex-col gap-3">
+          <ul className="mt-2 flex flex-col md:mt-4 md:gap-3">
             <li>
-              <Link href="/shop" className="editorial-link text-body-sm text-muted">
-                All Designs
+              <Link href="/shop" className="inline-flex min-h-11 items-center text-body-sm text-muted md:min-h-0">
+                <span className="editorial-link">All Designs</span>
               </Link>
             </li>
             <li>
-              <Link href="/made-to-measure" className="editorial-link text-body-sm text-muted">
-                Made to Measure
+              <Link href="/made-to-measure" className="inline-flex min-h-11 items-center text-body-sm text-muted md:min-h-0">
+                <span className="editorial-link">Made to Measure</span>
               </Link>
             </li>
             <li>
-              <Link href="/size-fit" className="editorial-link text-body-sm text-muted">
-                Size &amp; Fit
+              <Link href="/size-fit" className="inline-flex min-h-11 items-center text-body-sm text-muted md:min-h-0">
+                <span className="editorial-link">Size &amp; Fit</span>
               </Link>
             </li>
           </ul>
@@ -42,20 +39,20 @@ export default function Footer() {
 
         <nav aria-label="House">
           <p className="text-label-md text-ink">House</p>
-          <ul className="mt-4 flex flex-col gap-3">
+          <ul className="mt-2 flex flex-col md:mt-4 md:gap-3">
             <li>
-              <Link href="/about" className="editorial-link text-body-sm text-muted">
-                About
+              <Link href="/about" className="inline-flex min-h-11 items-center text-body-sm text-muted md:min-h-0">
+                <span className="editorial-link">About</span>
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="editorial-link text-body-sm text-muted">
-                Contact
+              <Link href="/contact" className="inline-flex min-h-11 items-center text-body-sm text-muted md:min-h-0">
+                <span className="editorial-link">Contact</span>
               </Link>
             </li>
             <li>
-              <Link href="/orders/lookup" className="editorial-link text-body-sm text-muted">
-                Order Lookup
+              <Link href="/orders/lookup" className="inline-flex min-h-11 items-center text-body-sm text-muted md:min-h-0">
+                <span className="editorial-link">Order Lookup</span>
               </Link>
             </li>
           </ul>

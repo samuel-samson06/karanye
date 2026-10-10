@@ -246,7 +246,7 @@ export default function Filter({ value, counts, total, onChange, onReset }: Filt
       <button
         type="button"
         onClick={() => setDrawerOpen(true)}
-        className="inline-flex h-[52px] min-h-11 w-full items-center justify-center border border-ink text-label-md text-ink lg:hidden"
+        className="inline-flex h-13 w-full items-center justify-center border border-ink text-label-md text-ink lg:hidden"
       >
         Filters{chips.length > 0 ? ` (${chips.length})` : ""}
       </button>
@@ -283,7 +283,7 @@ export default function Filter({ value, counts, total, onChange, onReset }: Filt
           />
           <div
             id={panelId}
-            className="absolute right-0 bottom-0 left-0 max-h-[90vh] overflow-y-auto border-t border-platinum bg-canvas px-5 py-6"
+            className="absolute right-0 bottom-0 left-0 max-h-[90dvh] overflow-y-auto border-t border-platinum bg-canvas px-5 py-6"
           >
             <div className="flex items-center justify-between">
               <p className="text-headline-sm text-ink">Filters</p>
@@ -303,7 +303,7 @@ export default function Filter({ value, counts, total, onChange, onReset }: Filt
             <button
               type="button"
               onClick={() => setDrawerOpen(false)}
-              className="mt-6 inline-flex h-[52px] min-h-11 w-full items-center justify-center bg-crimson text-label-md text-canvas"
+              className="mt-6 inline-flex h-13 w-full items-center justify-center bg-crimson text-label-md text-canvas"
             >
               View selection
             </button>

@@ -8,13 +8,10 @@ import InfoSection from "@/components/contact/InfoSection";
 export default function ContactPage() {
   return (
     <main className="bg-canvas">
-      <div className="mx-auto max-w-7xl px-5 pt-14 md:px-8 lg:px-16 lg:pt-20">
+      <div className="mx-auto max-w-7xl px-5 pt-14 md:px-8 md:pt-20 lg:px-16">
         <p className="text-label-md text-muted">Client Care &amp; Salon Liaison — Vol. 05</p>
         <div className="mt-4 grid gap-6 lg:grid-cols-12 lg:items-end">
-          <h1
-            className="text-display-xl text-ink lg:col-span-6"
-            style={{ fontFamily: "var(--font-bodoni)" }}
-          >
+          <h1 className="text-display-xl text-ink lg:col-span-6">
             Contact
           </h1>
           <p className="max-w-xl text-body-md text-muted lg:col-span-6">
@@ -34,17 +31,14 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <div className="mt-16 border-t border-platinum bg-linen">
-        <div className="mx-auto max-w-7xl px-5 py-14 md:px-8 lg:px-16">
+      <div className="mt-14 border-t border-platinum bg-linen lg:mt-16">
+        <div className="mx-auto max-w-7xl px-5 py-14 md:px-8 md:py-20 lg:px-16">
           <p className="text-center text-label-md text-muted">Accelerated inquiries</p>
-          <h2
-            className="mx-auto mt-3 max-w-2xl text-center text-display-lg text-ink"
-            style={{ fontFamily: "var(--font-bodoni)" }}
-          >
+          <h2 className="mx-auto mt-3 max-w-2xl text-center text-display-lg text-ink">
             Seeking Immediate Fitting or Measurement Direction?
           </h2>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            <div className="border border-platinum bg-canvas p-8">
+            <div className="border border-platinum bg-canvas p-6 md:p-8">
               <p className="text-label-md text-muted">Protocol &amp; Measurements</p>
               <h3 className="mt-3 text-headline-md text-ink">Size &amp; Fit Guide</h3>
               <p className="mt-3 text-body-md text-muted">
@@ -59,7 +53,7 @@ export default function ContactPage() {
                 View Sizing Guide →
               </Link>
             </div>
-            <div className="border border-platinum bg-canvas p-8">
+            <div className="border border-platinum bg-canvas p-6 md:p-8">
               <p className="text-label-md text-muted">Haute Couture Commission</p>
               <h3 className="mt-3 text-headline-md text-ink">Made to Measure</h3>
               <p className="mt-3 text-body-md text-muted">

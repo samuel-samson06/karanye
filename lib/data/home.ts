@@ -3,6 +3,12 @@
 // Karanyé copy, pricing, and brand photography once supplied.
 // No Supabase wiring here (Phase 2 owns the catalogue).
 
+// Every image slot uses the first brand photograph until art direction assigns
+// the rest of public/images. TODO(content): assign final image per slot.
+export const placeholderImage = "/images/style_01.jpeg";
+export const placeholderImageAlt =
+  "Model in a strapless yellow and blue geometric-print dress with a cobalt tulle hem";
+
 export type HomeProductStatus = "made_to_order" | "limited" | "sold_out";
 
 export interface HomeProduct {
@@ -43,9 +49,8 @@ export const heroCopy = {
   ctaLabel: "Discover Our Story",
   ctaHref: "/about",
   // TODO(content): replace with brand photography
-  image:
-    "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1600&auto=format&fit=crop",
-  imageAlt: "Model wearing a sculptural crimson Karanyé gown",
+  image: placeholderImage,
+  imageAlt: placeholderImageAlt,
 };
 
 export const philosophyCopy = {
@@ -53,9 +58,8 @@ export const philosophyCopy = {
   quote:
     "We construct garments not as disposable inventory, but as wearable architecture — sculpted slowly, fitted personally.",
   body: "Every Karanyé piece is made to order in our atelier. No mass production, no warehouses of stock — only considered cutting, careful finishing, and fabric chosen to last.",
-  detailImage:
-    "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1200&auto=format&fit=crop",
-  detailAlt: "Close-up of pleated crimson fabric detail",
+  detailImage: placeholderImage,
+  detailAlt: placeholderImageAlt,
   stats: [
     { value: "100%", label: "Made to order" },
     { value: "5–7 Days", label: "Processing time" },
@@ -70,9 +74,8 @@ export const homeProducts: HomeProduct[] = [
     name: "The Zaria Sculpted Gown",
     priceKobo: 28500000,
     status: "made_to_order",
-    image:
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=900&auto=format&fit=crop",
-    alt: "Model wearing a sculptural crimson evening gown",
+    image: placeholderImage,
+    alt: placeholderImageAlt,
   },
   {
     slug: "amani-draped-ensemble",
@@ -80,9 +83,8 @@ export const homeProducts: HomeProduct[] = [
     name: "The Amani Draped Ensemble",
     priceKobo: 19800000,
     status: "made_to_order",
-    image:
-      "https://images.unsplash.com/photo-1591369822096-ffd140ec948f?q=80&w=900&auto=format&fit=crop",
-    alt: "Model wearing a draped brown two-piece ensemble",
+    image: placeholderImage,
+    alt: placeholderImageAlt,
   },
   {
     slug: "opaque-pleated-trouser",
@@ -90,9 +92,8 @@ export const homeProducts: HomeProduct[] = [
     name: "The Opaque Pleated Trouser Set",
     priceKobo: 16400000,
     status: "limited",
-    image:
-      "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=900&auto=format&fit=crop",
-    alt: "Model wearing a dark pleated strapless set",
+    image: placeholderImage,
+    alt: placeholderImageAlt,
   },
   {
     slug: "nomad-architectural-blazer",
@@ -100,9 +101,8 @@ export const homeProducts: HomeProduct[] = [
     name: "The Nomad Architectural Blazer",
     priceKobo: 21200000,
     status: "limited",
-    image:
-      "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=900&auto=format&fit=crop",
-    alt: "Model wearing a structured crimson blazer with wide sleeves",
+    image: placeholderImage,
+    alt: placeholderImageAlt,
   },
 ];
 
@@ -134,12 +134,10 @@ export const craftCopy = {
   body: "Inside the atelier, each commission passes through the same hands — from pattern draft to final press. Slow work, on purpose.",
   linkLabel: "Explore our story",
   linkHref: "/about",
-  imageA:
-    "https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=1200&auto=format&fit=crop",
-  imageAAlt: "Garments hanging inside the Karanyé atelier",
-  imageB:
-    "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop",
-  imageBAlt: "Atelier rail with carefully finished pieces",
+  imageA: placeholderImage,
+  imageAAlt: placeholderImageAlt,
+  imageB: placeholderImage,
+  imageBAlt: placeholderImageAlt,
 };
 
 export const privateListCopy = {

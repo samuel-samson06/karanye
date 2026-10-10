@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { placeholderImage, placeholderImageAlt } from "@/lib/data/home";
 
 // Origin act: dress-form imagery beside the Lagos narrative and the
 // three construction principles. Copy is screenshot placeholder.
@@ -6,24 +7,21 @@ import Image from "next/image";
 export default function Story() {
   return (
     <section aria-label="Rooted in Lagos" className="bg-canvas">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:px-8 lg:grid-cols-12 lg:gap-8 lg:px-16 lg:py-24">
-        <div className="relative aspect-[3/4] w-full overflow-hidden border border-platinum lg:col-span-5">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-8 md:gap-6 md:px-8 md:py-20 lg:grid-cols-12 lg:gap-8 lg:px-16 lg:py-24">
+        <div className="relative aspect-[4/5] w-full overflow-hidden border border-platinum md:col-span-3 md:aspect-[3/4] lg:col-span-5">
           {/* TODO(content): replace with brand photography */}
           <Image
-            src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=900&auto=format&fit=crop"
-            alt="Crimson fabric draped on a dress form in the atelier"
+            src={placeholderImage}
+            alt={placeholderImageAlt}
             fill
-            sizes="(min-width: 1024px) 40vw, 100vw"
+            sizes="(min-width: 1024px) 40vw, (min-width: 768px) 36vw, 100vw"
             className="object-cover"
           />
         </div>
 
-        <div className="flex flex-col justify-center lg:col-span-7 lg:pl-8">
+        <div className="flex flex-col justify-center md:col-span-5 md:pl-4 lg:col-span-7 lg:pl-8">
           <p className="text-label-md text-muted">Origins</p>
-          <h2
-            className="mt-3 text-display-lg text-ink"
-            style={{ fontFamily: "var(--font-bodoni)" }}
-          >
+          <h2 className="mt-3 text-display-lg text-ink">
             Rooted in Lagos, Cut for the World
           </h2>
           <p className="mt-6 max-w-xl text-body-md text-muted">

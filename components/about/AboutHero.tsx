@@ -1,31 +1,30 @@
 import Image from "next/image";
+import { placeholderImage, placeholderImageAlt } from "@/lib/data/home";
 
 // About hero: eyebrow, title, full-width atelier image, pull quote.
 // Copy transcribed from the approved screenshot — TODO(content) throughout.
 export default function AboutHero() {
   return (
     <section aria-label="The story of Karanyé" className="bg-canvas">
-      <div className="mx-auto max-w-7xl px-5 pt-14 md:px-8 lg:px-16 lg:pt-20">
-        <div className="flex flex-wrap items-end justify-between gap-4">
+      <div className="mx-auto max-w-7xl px-5 pt-14 md:px-8 md:pt-20 lg:px-16">
+        <div className="flex flex-wrap items-end justify-between gap-x-4 gap-y-2">
           <p className="text-label-md text-muted">The House of Karanyé</p>
           <p className="text-label-md text-muted">Lagos Atelier · Mayfair Suite</p>
         </div>
-        <h1
-          className="mt-4 max-w-3xl text-display-xl text-ink"
-          style={{ fontFamily: "var(--font-bodoni)" }}
-        >
+        <h1 className="mt-4 max-w-3xl text-display-xl text-ink">
           The Story of Karanyé
         </h1>
 
-        <div className="relative mt-10 aspect-[16/9] w-full overflow-hidden border border-platinum">
+        {/* Portrait on phones, widening by breakpoint; a 16:9 band on mobile would be a sliver. */}
+        <div className="relative mt-10 aspect-[4/5] w-full overflow-hidden border border-platinum md:aspect-[4/3] lg:aspect-[16/9]">
           {/* TODO(content): replace with brand atelier photography */}
           <Image
-            src="https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=1600&auto=format&fit=crop"
-            alt="Model in an ivory gown inside the Karanyé atelier"
+            src={placeholderImage}
+            alt={placeholderImageAlt}
             fill
             priority
-            sizes="100vw"
-            className="object-cover"
+            sizes="(min-width: 1280px) 1152px, 100vw"
+            className="object-cover object-[center_25%]"
           />
         </div>
 

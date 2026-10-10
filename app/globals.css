@@ -23,6 +23,38 @@ body {
   font-family: var(--font-hanken);
 }
 
+/* iOS/Safari draw native form controls with rounded corners and inner
+   shading regardless of our classes; flatten them so radius stays 0 (§3.5).
+   In the base layer so component utilities still win. Checkboxes and radios
+   keep native appearance until the §3.7 custom versions are built. */
+@layer base {
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea,
+  button {
+    border-radius: 0;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+  /* appearance: none removes the native arrow, so draw a square chevron.
+     Stroke is the ink token (#1a1818); data URIs cannot read CSS variables. */
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%231a1818' stroke-width='1'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.875rem center;
+    background-size: 12px 12px;
+  }
+}
+/* Outside the layer on purpose: px-* utilities would otherwise push the
+   label text under the chevron. */
+select {
+  padding-right: 2.5rem;
+}
+
 /* Visible keyboard focus everywhere (a11y baseline §3.8). */
 :focus-visible {
   outline: 2px solid var(--color-crimson);

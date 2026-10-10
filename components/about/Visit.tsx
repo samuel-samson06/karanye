@@ -34,56 +34,47 @@ const studios = [
 export default function Visit() {
   return (
     <section aria-label="Engage the atelier" className="bg-linen">
-      <div className="mx-auto max-w-7xl px-5 py-14 md:px-8 lg:px-16 lg:py-24">
+      <div className="mx-auto max-w-7xl px-5 py-14 md:px-8 md:py-20 lg:px-16 lg:py-24">
         <p className="text-label-md text-muted">Commissioning</p>
-        <h2
-          className="mt-3 text-display-lg text-ink"
-          style={{ fontFamily: "var(--font-bodoni)" }}
-        >
+        <h2 className="mt-3 text-display-lg text-ink">
           The Patron &amp; The Atelier
         </h2>
-        <ul className="mt-10 grid gap-6 md:grid-cols-3">
+        <ul className="mt-10 grid gap-6 lg:grid-cols-3 lg:gap-8">
           {patronCards.map((card) => (
-            <li key={card.title} className="border border-platinum bg-canvas p-8">
+            <li key={card.title} className="border border-platinum bg-canvas p-6 lg:p-8">
               <h3 className="text-headline-sm text-ink">{card.title}</h3>
               <p className="mt-3 text-body-md text-muted">{card.body}</p>
             </li>
           ))}
         </ul>
 
-        <p className="mt-16 text-label-md text-muted">Studios</p>
-        <h2
-          className="mt-3 text-display-lg text-ink"
-          style={{ fontFamily: "var(--font-bodoni)" }}
-        >
+        <p className="mt-14 text-label-md text-muted lg:mt-16">Studios</p>
+        <h2 className="mt-3 text-display-lg text-ink">
           Two Cities, One Architectural Vision
         </h2>
         <ul className="mt-10 grid gap-6 md:grid-cols-2">
           {studios.map((studio) => (
-            <li key={studio.name} className="border border-platinum bg-canvas p-8 lg:p-10">
+            <li key={studio.name} className="border border-platinum bg-canvas p-6 md:p-8 lg:p-10">
               <h3 className="text-headline-md text-ink">{studio.name}</h3>
               <p className="mt-3 text-body-md text-muted">{studio.body}</p>
             </li>
           ))}
         </ul>
 
-        <div className="mt-16 border-t border-hairline pt-12 text-center">
-          <h2
-            className="mx-auto max-w-xl text-display-lg text-ink"
-            style={{ fontFamily: "var(--font-bodoni)" }}
-          >
+        <div className="mt-14 border-t border-hairline pt-12 text-center lg:mt-16">
+          <h2 className="mx-auto max-w-xl text-display-lg text-ink">
             Experience the Silhouettes Firsthand
           </h2>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Link
               href="/shop"
-              className="inline-flex h-[52px] min-h-11 items-center justify-center bg-crimson px-8 text-label-md text-canvas transition-colors hover:bg-crimson-deep"
+              className="inline-flex h-13 items-center justify-center bg-crimson px-8 text-label-md text-canvas transition-colors hover:bg-crimson-deep"
             >
               Discover the Collection
             </Link>
             <Link
               href="/made-to-measure"
-              className="inline-flex h-[52px] min-h-11 items-center justify-center border border-ink px-8 text-label-md text-ink transition-colors hover:bg-ink hover:text-canvas"
+              className="inline-flex h-13 items-center justify-center border border-ink px-8 text-label-md text-ink transition-colors hover:bg-ink hover:text-canvas"
             >
               Discover Made to Measure
             </Link>
