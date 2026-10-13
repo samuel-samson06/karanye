@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Filter, { DEFAULT_FILTERS, type ShopFilterState } from "@/components/shop/Filter";
-import Guarantee from "@/components/shop/Guarantee";
+// import Guarantee from "@/components/shop/Guarantee";
 import ProductList from "@/components/shop/ProductList";
 import SizingHelp from "@/components/shop/SizingHelp";
 import { shopProducts } from "@/lib/data/shop";
@@ -137,10 +137,7 @@ export default function ShopPage() {
 
       {filtered.length > 0 && (
         <>
-          <div className="mt-14">
-            <Guarantee />
-          </div>
-
+          
           {tail.length > 0 && (
             <div className="mx-auto max-w-7xl px-5 pt-14 md:px-8 lg:px-16">
               <ProductList products={tail} />
@@ -161,6 +158,8 @@ export default function ShopPage() {
               </button>
             )}
           </div>
+
+          {/* <Guarantee /> */}
 
           <SizingHelp />
         </>

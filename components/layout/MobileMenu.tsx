@@ -71,7 +71,7 @@ export default function MobileMenu({ links, open, onClose, onOpen }: MobileMenuP
             <path d="M6 6V5a3 3 0 0 1 6 0v1" stroke="currentColor" strokeWidth="1" />
           </svg>
         </Link>
-        <Link
+        {/* <Link
           href="/orders/lookup"
           aria-label="Account — order lookup"
           className="flex min-h-11 min-w-11 items-center justify-center text-ink"
@@ -80,7 +80,7 @@ export default function MobileMenu({ links, open, onClose, onOpen }: MobileMenuP
             <circle cx="9" cy="6" r="3" stroke="currentColor" strokeWidth="1" />
             <path d="M3 17c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5" stroke="currentColor" strokeWidth="1" />
           </svg>
-        </Link>
+        </Link> */}
       </div>
 
       {open && (
@@ -134,13 +134,13 @@ export default function MobileMenu({ links, open, onClose, onOpen }: MobileMenuP
               >
                 shop
               </Link>
-              <Link
+              {/* <Link
                 href="/orders/lookup"
                 onClick={onClose}
                 className="flex h-[52px] items-center justify-center bg-crimson text-label-md text-canvas"
               >
                 Account — Order Lookup
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

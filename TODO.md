@@ -30,7 +30,8 @@ Updated at the end of every task. Source of truth for sequencing stays `PROJECT.
 - [ ] Phase 4 — Content pages: About, Size & Fit, Made to Measure, Contact + API,
       Private List + API
 - [ ] Phase 5 — Bag/shop drawer + checkout + Paystack + emails. BLOCKED on delivery (§17)
-- [ ] Phase 6 — Admin: orders, waitlist CSV, Order Lookup
+- [ ] Phase 6 — Admin: orders, waitlist CSV, Order Lookup (consider ticket-style
+      progress timeline UI for the lookup result)
 - [ ] Phase 7 — Operations + launch (keep-alive, backups, a11y pass, full QA)
 
 ## Blocked — open decisions (PROJECT.md §17, do not implement until resolved)

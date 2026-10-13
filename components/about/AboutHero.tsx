@@ -15,12 +15,12 @@ export default function AboutHero() {
           <p className="text-label-md text-muted">The House of Karanyé</p>
           <p className="text-label-md text-muted">Lagos Atelier · Mayfair Suite</p>
         </div>
-        <h1 className="mt-4 max-w-3xl text-display-xl text-ink">
+        <h1 className="mt-4 max-w-5xl text-display-lg md:text-display-xl text-ink">
           The Story of Karanyé
         </h1>
 
         {/* Portrait on phones, widening by breakpoint; a 16:9 band on mobile would be a sliver. */}
-        <div className="relative mt-10 aspect-[4/5] w-full overflow-hidden border border-platinum md:aspect-[4/3] lg:aspect-[16/9]">
+        <div className="relative mt-10 aspect-[4/5] w-full overflow-hidden border border-platinum md:aspect-[4/3] lg:aspect-[20/9]">
           {/* TODO(content): replace with brand atelier photography */}
           <Image
             src={image}
@@ -32,9 +32,9 @@ export default function AboutHero() {
           />
         </div>
 
-        <blockquote className="mx-auto mt-10 max-w-2xl text-center text-headline-lg text-ink">
-          &ldquo;An inquiry into form, memory, and the enduring poise of
-          made-to-order Nigerian couture.&rdquo;
+        <blockquote className="mx-auto mt-10 max-w-2xl text-center text-headline-md md:text-headline-lg text-ink">
+          An inquiry into form, memory, and the enduring poise of
+          made-to-order Nigerian couture.
         </blockquote>
       </div>
     </section>
