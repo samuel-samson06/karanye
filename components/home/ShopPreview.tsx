@@ -27,7 +27,7 @@ export default function ShopPreview() {
           </Link>
         </div>
 
-        <ul className="mt-10 grid grid-cols-1 gap-y-12 md:grid-cols-2 md:gap-x-6 md:gap-y-14 lg:gap-x-8 lg:gap-y-16">
+        <ul className="mt-10 grid grid-cols-1 gap-y-12 md:grid-cols-3 md:gap-x-6 md:gap-y-14 lg:gap-x-8 lg:gap-y-16">
           {homeProducts.map((product) => (
             <li key={product.slug}>
               <Link

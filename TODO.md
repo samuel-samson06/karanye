@@ -18,6 +18,7 @@ Updated at the end of every task. Source of truth for sequencing stays `PROJECT.
 - [x] Fix leftover `BagPage` name in shop placeholder (absorbed by rewrite above)
 - [x] About page (4 sections, copy inline per convention, screenshot placeholders)
 - [x] Contact page (InfoSection + FormSection with dead submit → toast, guidance inline)
+- [x] Hero slider (ScrollImages: 5s autoplay, no drag/controls, reduced-motion static)
 
 ## Next (in phase order, one phase at a time with review)
 

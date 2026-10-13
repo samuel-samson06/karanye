@@ -1,13 +1,15 @@
 import Image from "next/image";
 import { philosophyCopy } from "@/lib/data/home";
 
-// Brand statement: fabric detail beside pull quote, with atelier stats.
-// Stacks on mobile; 3/5 split on tablet; 5/7 split on desktop.
+
+const stats = [{ value: "100%", label: "Made to order" },{ value: "5–7 Days", label: "Processing time" }, { value: "Lagos & London", label: "Atelier presence" }]
+
+
 export default function Preview() {
   return (
     <section aria-label="Karanyé philosophy" className="bg-canvas">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-8 md:gap-6 md:px-8 md:py-20 lg:grid-cols-12 lg:gap-8 lg:px-16 lg:py-24">
-        <div className="relative aspect-[4/5] w-full overflow-hidden border border-platinum md:col-span-3 md:aspect-[3/4] lg:col-span-5">
+        <div className="relative aspect-[4/5] w-full overflow-hidden border border-platinum md:col-span-3 lg:col-span-5">
           <Image
             src={philosophyCopy.detailImage}
             alt={philosophyCopy.detailAlt}
@@ -18,13 +20,13 @@ export default function Preview() {
         </div>
         <div className="flex flex-col justify-center md:col-span-5 md:pl-4 lg:col-span-7 lg:pl-8">
           <blockquote className="text-headline-lg text-ink">
-            &ldquo;{philosophyCopy.quote}&rdquo;
+            &ldquo;We construct garments not as disposable inventory, but as wearable architecture — sculpted slowly, fitted personally.&rdquo;
           </blockquote>
           <p className="mt-6 max-w-xl text-body-md text-muted">
-            {philosophyCopy.body}
+            Every Karanyé piece is made to order in our atelier. No mass production, no warehouses of stock — only considered cutting, careful finishing, and fabric chosen to last.
           </p>
           <dl className="mt-10 grid grid-cols-3 border-t border-hairline pt-6">
-            {philosophyCopy.stats.map((stat) => (
+            {stats.map((stat) => (
               // dt must precede dd in the DOM; flex-col-reverse puts the value on top.
               <div
                 key={stat.label}

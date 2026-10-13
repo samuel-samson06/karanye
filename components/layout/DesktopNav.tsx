@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { navLinks } from "@/lib/data/home";
+import Image from "next/image";
+import logo from "@/public/images/logo.png";
 
 // Desktop navigation: wordmark left, links centre, shop + Account right.
 // Hidden below lg; MobileMenu owns smaller screens.
@@ -12,7 +14,7 @@ export default function DesktopNav() {
         className="text-headline-md tracking-[0.08em]"
         style={{ fontFamily: "var(--font-bodoni)" }}
       >
-        KARANYÉ
+        <Image src={logo} alt="Karanyé" width={120} height={120}/>
       </Link>
 
       <nav aria-label="Primary" className="flex items-center gap-8">
@@ -53,27 +55,7 @@ export default function DesktopNav() {
           </svg>
           shop
         </Link>
-        <Link
-          href="/orders/lookup"
-          className="editorial-link flex min-h-11 min-w-11 items-center gap-2 text-label-md text-ink"
-          aria-label="Account — order lookup"
-        >
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 18 18"
-            fill="none"
-            aria-hidden="true"
-          >
-            <circle cx="9" cy="6" r="3" stroke="currentColor" strokeWidth="1" />
-            <path
-              d="M3 17c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"
-              stroke="currentColor"
-              strokeWidth="1"
-            />
-          </svg>
-          Account
-        </Link>
+        
       </div>
     </div>
   );
