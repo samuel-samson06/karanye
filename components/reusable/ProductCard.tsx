@@ -52,15 +52,6 @@ export default function ProductCard({ product }: ProductCardProps) {
           )}
         </Link>
 
-        <span
-          className={
-            product.status === "sold_out"
-              ? "absolute top-2 left-2 max-w-[calc(100%-1rem)] border border-hairline bg-canvas px-2 py-1 text-label-md text-muted md:top-3 md:left-3 md:px-3 md:py-2"
-              : "absolute top-2 left-2 max-w-[calc(100%-1rem)] border border-crimson bg-canvas px-2 py-1 text-label-md text-crimson md:top-3 md:left-3 md:px-3 md:py-2"
-          }
-        >
-          {statusLabel[product.status]}
-        </span>
 
         {total > 1 && (
           <>
@@ -89,7 +80,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       </div>
 
       <Link href={`/products/${product.slug}`} className="mt-3 block md:mt-4">
-        <h3 className="text-headline-sm text-ink">{product.name}</h3>
+        <h3 className="text-headline-xs md:text-headline-sm text-ink">{product.name}</h3>
       </Link>
       <p className="mt-1 text-body-sm text-muted">{product.fabricLine}</p>
       <p className="mt-2 mb-4 text-label-md text-ink">{formatNaira(product.priceKobo)}</p>
