@@ -6,7 +6,7 @@ const detailAlt =
   "Model in a strapless yellow and blue geometric-print dress with a cobalt tulle hem";
 
 
-const stats = [{ value: "100%", label: "Made to order" },{ value: "5–7 Days", label: "Processing time" }, { value: "Lagos & London", label: "Atelier presence" }]
+const stats = [{ value: "100%", label: "Made to order" },{ value: "5–7", label: "Days Time" }, { value: "Lagos", label: "Atelier" }]
 
 
 export default function Preview() {

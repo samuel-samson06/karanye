@@ -29,7 +29,7 @@ export default function Craft() {
             className="object-cover object-[center_25%]"
           />
         </div>
-        <div className="relative aspect-square w-full overflow-hidden border border-platinum md:col-span-3 md:self-end lg:col-span-5 lg:aspect-[4/3] lg:self-start">
+        <div className="relative aspect-square w-full overflow-hidden border border-platinum md:col-span-3 md:self-end lg:col-span-5 lg:aspect-[4/3] lg:self-start  hidden md:block">
           <Image
             src={image}
             alt={imageAlt}
