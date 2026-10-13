@@ -3,7 +3,10 @@
 // Karanyé catalogue data. Postgres-backed search/filter/sort arrives in Phase 2;
 // until then filtering is client-side over this list (§13 migration noted).
 
-import { placeholderImage, placeholderImageAlt } from "@/lib/data/home";
+// TODO(content): assign final image per product once art direction is set.
+const placeholderImage = "/images/style_01.jpeg";
+const placeholderImageAlt =
+  "Model in a strapless yellow and blue geometric-print dress with a cobalt tulle hem";
 
 export type ShopCategory = "gowns" | "outerwear" | "separates" | "corsetry";
 

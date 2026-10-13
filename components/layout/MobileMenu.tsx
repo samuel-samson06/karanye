@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useEffect, useId, useRef } from "react";
-import { navLinks } from "@/lib/data/home";
+import type { NavLink } from "@/components/layout/Navigation";
 
 interface MobileMenuProps {
+  links: NavLink[];
   open: boolean;
   onClose: () => void;
   onOpen: () => void;
@@ -12,7 +13,7 @@ interface MobileMenuProps {
 
 // Mobile navigation: hamburger opens a full-height overlay panel.
 // shop and Account stay visible in the bar at all times (§3.7).
-export default function MobileMenu({ open, onClose, onOpen }: MobileMenuProps) {
+export default function MobileMenu({ links, open, onClose, onOpen }: MobileMenuProps) {
   const panelId = useId();
   const openButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -114,7 +115,7 @@ export default function MobileMenu({ open, onClose, onOpen }: MobileMenuProps) {
               </button>
             </div>
             <nav aria-label="Mobile" className="mt-8 flex flex-col gap-2">
-              {navLinks.map((link) => (
+              {links.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}

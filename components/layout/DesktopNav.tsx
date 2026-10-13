@@ -1,11 +1,15 @@
 import Link from "next/link";
-import { navLinks } from "@/lib/data/home";
 import Image from "next/image";
 import logo from "@/public/images/logo.png";
+import type { NavLink } from "@/components/layout/Navigation";
+
+interface DesktopNavProps {
+  links: NavLink[];
+}
 
 // Desktop navigation: wordmark left, links centre, shop + Account right.
 // Hidden below lg; MobileMenu owns smaller screens.
-export default function DesktopNav() {
+export default function DesktopNav({ links }: DesktopNavProps) {
   return (
     <div className="hidden lg:flex items-center justify-between gap-8">
       <Link
@@ -18,7 +22,7 @@ export default function DesktopNav() {
       </Link>
 
       <nav aria-label="Primary" className="flex items-center gap-8">
-        {navLinks.map((link) => (
+        {links.map((link) => (
           <Link
             key={link.href}
             href={link.href}

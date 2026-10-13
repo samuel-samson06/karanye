@@ -1,5 +1,10 @@
-import { announcementLines } from "@/lib/data/home";
 import Navigation from "@/components/layout/Navigation";
+
+// TODO(content): confirm announcement bar copy.
+const announcementLines: string[] = [
+  "Made to order, thoughtfully crafted.",
+  "Allow 5–7 days to process your orders.",
+];
 
 // Universal header: slim announcement bar + bordered navigation shell.
 export default function Header() {

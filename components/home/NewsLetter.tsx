@@ -1,7 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { privateListCopy } from "@/lib/data/home";
+
+// TODO(content): replace with approved private list copy.
+const title = "Join Our Private List";
+const body =
+  "New designs, atelier notes, and first access to limited pieces. One letter at a time.";
+const nameLabel = "Name";
+const emailLabel = "Email";
+const submitLabel = "Join the Private List";
+const note = "We write rarely and only when it matters. Unsubscribe anytime.";
 
 // Private List invitation: name + email. UI only — no API wiring yet.
 // TODO(content): wire to POST /api/waitlist in Phase 4 (with honeypot + Resend).
@@ -11,9 +19,9 @@ export default function NewsLetter() {
   return (
     <section aria-label="Join our private list" className="border-t border-platinum bg-canvas">
       <div className="mx-auto max-w-2xl px-5 py-14 text-center md:px-8 md:py-20 lg:py-24">
-        <h2 className="text-display-lg text-ink">{privateListCopy.title}</h2>
+        <h2 className="text-display-lg text-ink">{title}</h2>
         <p className="mx-auto mt-4 max-w-md text-body-md text-muted">
-          {privateListCopy.body}
+          {body}
         </p>
 
         {submitted ? (
@@ -41,7 +49,7 @@ export default function NewsLetter() {
             <div className="grid gap-8 md:grid-cols-2 md:gap-6">
               <div className="flex flex-col gap-2">
                 <label htmlFor="private-list-name" className="text-label-md text-muted">
-                  {privateListCopy.nameLabel}
+                  {nameLabel}
                 </label>
                 <input
                   id="private-list-name"
@@ -56,7 +64,7 @@ export default function NewsLetter() {
               </div>
               <div className="flex flex-col gap-2">
                 <label htmlFor="private-list-email" className="text-label-md text-muted">
-                  {privateListCopy.emailLabel}
+                  {emailLabel}
                 </label>
                 <input
                   id="private-list-email"
@@ -70,12 +78,12 @@ export default function NewsLetter() {
               </div>
             </div>
             <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-8">
-              <p className="text-body-sm text-muted md:max-w-xs">{privateListCopy.note}</p>
+              <p className="text-body-sm text-muted md:max-w-xs">{note}</p>
               <button
                 type="submit"
                 className="inline-flex h-13 shrink-0 items-center justify-center bg-crimson px-10 text-label-md text-canvas transition-colors hover:bg-crimson-deep"
               >
-                {privateListCopy.submitLabel}
+                {submitLabel}
               </button>
             </div>
           </form>

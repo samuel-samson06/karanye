@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { formatNaira } from "@/lib/data/home";
+import { formatNaira } from "@/lib/money";
 import type { ShopProduct } from "@/lib/data/shop";
 
 const statusLabel: Record<ShopProduct["status"], string> = {

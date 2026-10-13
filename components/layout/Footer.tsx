@@ -1,4 +1,6 @@
 import Link from "next/link";
+import logo from "@/public/images/logo.png";
+import Image from "next/image";
 
 // Universal footer: plain four-column editorial footer on canvas
 // with a platinum top border. Same tokens, type, and zero radius.
@@ -7,9 +9,14 @@ export default function Footer() {
     <footer className="border-t border-platinum bg-canvas">
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-x-6 gap-y-10 px-5 py-14 md:grid-cols-4 md:gap-8 md:px-8 lg:px-16">
         <div className="col-span-2 md:col-span-1">
-          <p className="text-headline-md tracking-[0.08em]">
-            KARANYÉ
-          </p>
+          <Link
+            href="/"
+            aria-label="Karanyé home"
+            className="text-headline-md tracking-[0.08em]"
+            style={{ fontFamily: "var(--font-bodoni)" }}
+          >
+            <Image src={logo} alt="Karanyé" width={120} height={120}/>
+          </Link>
           {/* TODO(content): confirm footer tagline */}
           <p className="mt-4 text-body-sm text-muted">
             Made to order, thoughtfully crafted.

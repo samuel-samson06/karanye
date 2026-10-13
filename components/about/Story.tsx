@@ -1,5 +1,9 @@
 import Image from "next/image";
-import { placeholderImage, placeholderImageAlt } from "@/lib/data/home";
+
+// TODO(content): assign final image and alt once art direction is set.
+const image = "/images/style_01.jpeg";
+const imageAlt =
+  "Model in a strapless yellow and blue geometric-print dress with a cobalt tulle hem";
 
 // Origin act: dress-form imagery beside the Lagos narrative and the
 // three construction principles. Copy is screenshot placeholder.
@@ -11,8 +15,8 @@ export default function Story() {
         <div className="relative aspect-[4/5] w-full overflow-hidden border border-platinum md:col-span-3 md:aspect-[3/4] lg:col-span-5">
           {/* TODO(content): replace with brand photography */}
           <Image
-            src={placeholderImage}
-            alt={placeholderImageAlt}
+            src={image}
+            alt={imageAlt}
             fill
             sizes="(min-width: 1024px) 40vw, (min-width: 768px) 36vw, 100vw"
             className="object-cover"

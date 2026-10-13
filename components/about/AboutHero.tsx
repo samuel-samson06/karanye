@@ -1,5 +1,9 @@
 import Image from "next/image";
-import { placeholderImage, placeholderImageAlt } from "@/lib/data/home";
+
+// TODO(content): assign final image and alt once art direction is set.
+const image = "/images/style_01.jpeg";
+const imageAlt =
+  "Model in a strapless yellow and blue geometric-print dress with a cobalt tulle hem";
 
 // About hero: eyebrow, title, full-width atelier image, pull quote.
 // Copy transcribed from the approved screenshot — TODO(content) throughout.
@@ -19,8 +23,8 @@ export default function AboutHero() {
         <div className="relative mt-10 aspect-[4/5] w-full overflow-hidden border border-platinum md:aspect-[4/3] lg:aspect-[16/9]">
           {/* TODO(content): replace with brand atelier photography */}
           <Image
-            src={placeholderImage}
-            alt={placeholderImageAlt}
+            src={image}
+            alt={imageAlt}
             fill
             priority
             sizes="(min-width: 1280px) 1152px, 100vw"

@@ -1,6 +1,58 @@
 import Image from "next/image";
 import Link from "next/link";
-import { formatNaira, homeProducts } from "@/lib/data/home";
+import { formatNaira } from "@/lib/money";
+
+type HomeProductStatus = "made_to_order" | "limited" | "sold_out";
+
+interface HomeProduct {
+  slug: string;
+  name: string;
+  priceKobo: number;
+  status: HomeProductStatus;
+  image: string;
+  alt: string;
+}
+
+// TODO(content): replace with real product names, prices, and imagery.
+// Every slot uses the first brand photograph until art direction assigns the rest.
+const placeholderImage = "/images/style_01.jpeg";
+const placeholderImageAlt =
+  "Model in a strapless yellow and blue geometric-print dress with a cobalt tulle hem";
+
+const homeProducts: HomeProduct[] = [
+  {
+    slug: "zaria-sculpted-gown",
+    name: "The Zaria Sculpted Gown",
+    priceKobo: 28500000,
+    status: "made_to_order",
+    image: placeholderImage,
+    alt: placeholderImageAlt,
+  },
+  {
+    slug: "amani-draped-ensemble",
+    name: "The Amani Draped Ensemble",
+    priceKobo: 19800000,
+    status: "made_to_order",
+    image: placeholderImage,
+    alt: placeholderImageAlt,
+  },
+  {
+    slug: "opaque-pleated-trouser",
+    name: "The Opaque Pleated Trouser Set",
+    priceKobo: 16400000,
+    status: "limited",
+    image: placeholderImage,
+    alt: placeholderImageAlt,
+  },
+  {
+    slug: "nomad-architectural-blazer",
+    name: "The Nomad Architectural Blazer",
+    priceKobo: 21200000,
+    status: "limited",
+    image: placeholderImage,
+    alt: placeholderImageAlt,
+  },
+];
 
 const statusLabel: Record<string, string> = {
   made_to_order: "Made to Order",
@@ -27,7 +79,7 @@ export default function ShopPreview() {
           </Link>
         </div>
 
-        <ul className="mt-10 grid grid-cols-1 gap-y-12 md:grid-cols-3 md:gap-x-6 md:gap-y-14 lg:gap-x-8 lg:gap-y-16">
+        <ul className="mt-10 grid grid-cols-1 gap-y-12 md:grid-cols-2 lg:grid-cols-3 md:gap-x-10 md:gap-y-14 lg:gap-x-12 lg:gap-y-16">
           {homeProducts.map((product) => (
             <li key={product.slug}>
               <Link

@@ -1,5 +1,9 @@
 import Image from "next/image";
-import { placeholderImage, placeholderImageAlt } from "@/lib/data/home";
+
+// TODO(content): assign final images and alts once art direction is set.
+const image = "/images/style_01.jpeg";
+const imageAlt =
+  "Model in a strapless yellow and blue geometric-print dress with a cobalt tulle hem";
 
 const tenets = [
   {
@@ -7,24 +11,24 @@ const tenets = [
     title: "Thoughtfully Crafted",
     body: "No sketch survives first contact with cloth unchanged. Each design is draped, pinned, and re-drafted until the architecture holds — only then does it earn the Karanyé name.",
     // TODO(content): replace with brand photography
-    image: placeholderImage,
-    alt: placeholderImageAlt,
+    image,
+    alt: imageAlt,
   },
   {
     index: "02",
     title: "Made to Order as Ethos",
     body: "Nothing is cut before it is commissioned. Your piece does not exist until you order it — and from that moment, it exists only for you.",
     // TODO(content): replace with brand photography
-    image: placeholderImage,
-    alt: placeholderImageAlt,
+    image,
+    alt: imageAlt,
   },
   {
     index: "03",
     title: "Form & Presence",
     body: "A Karanyé silhouette is a language of posture and proportion — sculptural where it should command, quiet where it should listen.",
     // TODO(content): replace with brand photography
-    image: placeholderImage,
-    alt: placeholderImageAlt,
+    image,
+    alt: imageAlt,
   },
 ];
 

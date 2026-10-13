@@ -1,5 +1,9 @@
 import Image from "next/image";
-import { philosophyCopy } from "@/lib/data/home";
+
+// TODO(content): assign final image and alt once art direction is set.
+const detailImage = "/images/style_01.jpeg";
+const detailAlt =
+  "Model in a strapless yellow and blue geometric-print dress with a cobalt tulle hem";
 
 
 const stats = [{ value: "100%", label: "Made to order" },{ value: "5–7 Days", label: "Processing time" }, { value: "Lagos & London", label: "Atelier presence" }]
@@ -11,8 +15,8 @@ export default function Preview() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-8 md:gap-6 md:px-8 md:py-20 lg:grid-cols-12 lg:gap-8 lg:px-16 lg:py-24">
         <div className="relative aspect-[4/5] w-full overflow-hidden border border-platinum md:col-span-3 lg:col-span-5">
           <Image
-            src={philosophyCopy.detailImage}
-            alt={philosophyCopy.detailAlt}
+            src={detailImage}
+            alt={detailAlt}
             fill
             sizes="(min-width: 1024px) 40vw, (min-width: 768px) 36vw, 100vw"
             className="object-cover"
