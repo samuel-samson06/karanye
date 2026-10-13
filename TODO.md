@@ -20,6 +20,7 @@ Updated at the end of every task. Source of truth for sequencing stays `PROJECT.
 - [x] Contact page (InfoSection + FormSection with dead submit → toast, guidance inline)
 - [x] Hero slider (ScrollImages: 5s autoplay, no drag/controls, reduced-motion static)
 - [x] Dissolved lib/data/home.ts (copy inline per convention; formatNaira → lib/money.ts; navLinks → Navigation props)
+- [x] Trimmed lib/data/shop.ts to products only (facets → Filter, copy → page/bands)
 
 ## Next (in phase order, one phase at a time with review)
 

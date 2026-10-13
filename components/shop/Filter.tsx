@@ -1,17 +1,45 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import {
-  shopCategories,
-  shopPalettes,
-  shopSizes,
-  shopSorts,
-  shopStatuses,
-  shopValuations,
-  shopCopy,
-  type ShopCategory,
-  type ShopStatus,
-} from "@/lib/data/shop";
+import type { ShopCategory, ShopStatus } from "@/lib/data/shop";
+
+// Filter option lists — single-use presentational data, kept with the filter.
+// TODO(content): replace with real catalogue facets in Phase 2.
+const shopCategories: { value: ShopCategory | "all"; label: string }[] = [
+  { value: "all", label: "All Silhouettes" },
+  { value: "gowns", label: "Gowns & Dresses" },
+  { value: "outerwear", label: "Architectural Outerwear" },
+  { value: "separates", label: "Tailored Separates" },
+  { value: "corsetry", label: "Corsetry & Bodices" },
+];
+
+const shopSizes: string[] = ["6", "8", "10", "12", "14", "16", "18"];
+
+const shopPalettes: string[] = ["Crimson", "Noir", "Bronze", "Forest", "Ivory"];
+
+const shopStatuses: { value: ShopStatus | "all"; label: string }[] = [
+  { value: "all", label: "All commission types" },
+  { value: "made_to_order", label: "Made to Order" },
+  { value: "limited", label: "Limited" },
+];
+
+const shopValuations: { value: string; label: string }[] = [
+  { value: "all", label: "All valuations" },
+  { value: "under-200", label: "Under ₦200,000" },
+  { value: "200-300", label: "₦200,000 – ₦300,000" },
+  { value: "above-300", label: "Above ₦300,000" },
+];
+
+const shopSorts: { value: string; label: string }[] = [
+  { value: "featured", label: "Featured curation" },
+  { value: "newest", label: "Newest" },
+  { value: "price-asc", label: "Price: low to high" },
+  { value: "price-desc", label: "Price: high to low" },
+  { value: "availability", label: "Availability" },
+];
+
+const searchPlaceholder = "Search silhouette";
+const resetLabel = "Reset filters";
 
 export interface ShopFilterState {
   category: ShopCategory | "all";
@@ -204,7 +232,7 @@ export default function Filter({ value, counts, total, onChange, onReset }: Filt
             type="search"
             value={value.query}
             onChange={(event) => set({ query: event.target.value })}
-            placeholder={shopCopy.searchPlaceholder}
+            placeholder={searchPlaceholder}
             className="h-12 min-h-11 w-full border border-hairline bg-canvas px-3 text-body-sm text-ink placeholder:text-muted focus:border-crimson focus:outline-none"
           />
         </div>
@@ -235,7 +263,7 @@ export default function Filter({ value, counts, total, onChange, onReset }: Filt
           onClick={onReset}
           className="editorial-link min-h-11 text-label-md text-crimson"
         >
-          {shopCopy.resetLabel}
+          {resetLabel}
         </button>
       </div>
     </div>

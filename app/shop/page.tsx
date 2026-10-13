@@ -5,9 +5,23 @@ import Filter, { DEFAULT_FILTERS, type ShopFilterState } from "@/components/shop
 import Guarantee from "@/components/shop/Guarantee";
 import ProductList from "@/components/shop/ProductList";
 import SizingHelp from "@/components/shop/SizingHelp";
-import { shopCopy, shopProducts } from "@/lib/data/shop";
+import { shopProducts } from "@/lib/data/shop";
 
 const PAGE_SIZE = 6;
+
+// TODO(content): replace with approved Shop copy.
+const eyebrow = "Archive & Current Releases";
+const title = "The Collection";
+const body =
+  "Each silhouette is thoughtfully crafted upon commission. Explore made-to-order designs, bespoke tailoring, and limited architectural pieces.";
+const resetLabel = "Reset filters";
+const loadMoreLabel = "Load more creations";
+const emptyTitle = "No silhouettes match your selection";
+const emptyBody = "Adjust or reset your filters to view the collection.";
+
+function showingOf(shown: number, total: number): string {
+  return `Showing ${shown} of ${total} silhouettes`;
+}
 
 // Shop composition: header, filters, head grid, guarantee band, tail grid,
 // pagination, sizing band. Filtering is client-side over dummy data until
@@ -84,11 +98,11 @@ export default function ShopPage() {
   return (
     <main className="bg-canvas">
       <div className="mx-auto max-w-7xl px-5 pt-14 md:px-8 md:pt-20 lg:px-16">
-        <p className="text-label-md text-muted">{shopCopy.eyebrow}</p>
+        <p className="text-label-md text-muted">{eyebrow}</p>
         <h1 className="mt-3 text-display-lg text-ink">
-          {shopCopy.title}
+          {title}
         </h1>
-        <p className="mt-4 max-w-2xl text-body-md text-muted">{shopCopy.body}</p>
+        <p className="mt-4 max-w-2xl text-body-md text-muted">{body}</p>
 
         <div className="mt-10">
           <Filter
@@ -102,16 +116,16 @@ export default function ShopPage() {
 
         {filtered.length === 0 ? (
           <div className="border border-platinum bg-linen px-6 py-14 text-center">
-            <h2 className="text-headline-sm text-ink">{shopCopy.emptyTitle}</h2>
+            <h2 className="text-headline-sm text-ink">{emptyTitle}</h2>
             <p className="mx-auto mt-3 max-w-md text-body-md text-muted">
-              {shopCopy.emptyBody}
+              {emptyBody}
             </p>
             <button
               type="button"
               onClick={resetFilters}
               className="mt-6 inline-flex h-13 items-center justify-center border border-ink px-8 text-label-md text-ink transition-colors hover:bg-ink hover:text-canvas"
             >
-              {shopCopy.resetLabel}
+              {resetLabel}
             </button>
           </div>
         ) : (
@@ -135,7 +149,7 @@ export default function ShopPage() {
 
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 px-5 py-14 md:px-8 lg:px-16">
             <p className="text-label-md text-muted">
-              {shopCopy.showingOf(shown, filtered.length)}
+              {showingOf(shown, filtered.length)}
             </p>
             {visibleCount < filtered.length && (
               <button
@@ -143,7 +157,7 @@ export default function ShopPage() {
                 onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
                 className="inline-flex h-13 items-center justify-center border border-ink px-8 text-label-md text-ink transition-colors hover:bg-ink hover:text-canvas"
               >
-                {shopCopy.loadMoreLabel}
+                {loadMoreLabel}
               </button>
             )}
           </div>

@@ -52,6 +52,15 @@ export default function ProductCard({ product }: ProductCardProps) {
           )}
         </Link>
 
+        {/* <span
+          className={
+            product.status === "sold_out"
+              ? "absolute top-3 left-3 border border-hairline bg-canvas px-3 py-2 text-label-md text-muted"
+              : "absolute top-3 left-3 border border-crimson bg-canvas px-3 py-2 text-label-md text-crimson"
+          }
+        >
+          {statusLabel[product.status]}
+        </span> */}
 
         {total > 1 && (
           <>
