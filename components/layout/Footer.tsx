@@ -15,7 +15,7 @@ export default function Footer() {
             className="text-headline-md tracking-[0.08em]"
             style={{ fontFamily: "var(--font-bodoni)" }}
           >
-            <Image src={logo} alt="Karanyé" width={120} height={120}/>
+            <Image src={logo} alt="Karanyé" width={120} className="h-auto w-[120px]" />
           </Link>
           {/* TODO(content): confirm footer tagline */}
           <p className="mt-4 text-body-sm text-muted">

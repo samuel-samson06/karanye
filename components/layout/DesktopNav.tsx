@@ -18,7 +18,7 @@ export default function DesktopNav({ links }: DesktopNavProps) {
         className="text-headline-md tracking-[0.08em]"
         style={{ fontFamily: "var(--font-bodoni)" }}
       >
-        <Image src={logo} alt="Karanyé" width={120} height={120}/>
+        <Image src={logo} alt="Karanyé" width={120} className="h-auto w-[120px]" />
       </Link>
 
       <nav aria-label="Primary" className="flex items-center gap-8">

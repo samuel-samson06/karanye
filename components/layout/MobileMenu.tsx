@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useId, useRef } from "react";
+import logo from "@/public/images/logo.png";
 import type { NavLink } from "@/components/layout/Navigation";
 
 interface MobileMenuProps {
@@ -51,13 +53,8 @@ export default function MobileMenu({ links, open, onClose, onOpen }: MobileMenuP
         </svg>
       </button>
 
-      <Link
-        href="/"
-        aria-label="Karanyé home"
-        className="text-headline-sm tracking-[0.08em]"
-        style={{ fontFamily: "var(--font-bodoni)" }}
-      >
-        KARANYÉ
+      <Link href="/" aria-label="Karanyé home" className="flex items-center">
+        <Image src={logo} alt="Karanyé" width={104} className="h-auto w-[104px]" />
       </Link>
 
       <div className="flex items-center gap-4">
@@ -96,12 +93,12 @@ export default function MobileMenu({ links, open, onClose, onOpen }: MobileMenuP
             className="absolute top-0 left-0 flex h-full w-[85%] max-w-80 flex-col border-r border-platinum bg-canvas px-5 py-6"
           >
             <div className="flex items-center justify-between">
-              <span
-                className="text-headline-sm tracking-[0.08em]"
-                style={{ fontFamily: "var(--font-bodoni)" }}
-              >
-                KARANYÉ
-              </span>
+              <Image
+                src={logo}
+                alt="Karanyé"
+                width={120}
+                className="h-auto w-[120px]"
+              />
               <button
                 ref={closeButtonRef}
                 type="button"

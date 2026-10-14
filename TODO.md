@@ -42,6 +42,8 @@ Objective: protected admin shell managing the Phase 1 schema.
 - [x] lib/supabase clients + trusted requireAdmin() (getUser + app_metadata)
 - [x] /admin/login (public), /admin/unauthorized (public), protected (protected) group
 - [x] Dashboard + products/collections skeleton routes (CRUD deferred)
+- [x] Admin section skeletons: orders, payments, customers, complaints,
+      subscribers (+ provisional reviews page, no table) with sidebar links
 - [ ] Manual: .env.local values, product-images bucket, provision admin + role SQL,
       sign out/in, verify gating live (anon → login, non-admin → unauthorized)
 - [ ] Next milestone: collections/products CRUD incl. images (+ordering) and
