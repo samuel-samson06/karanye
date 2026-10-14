@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Bodoni_Moda, Geist, Geist_Mono, Hanken_Grotesk } from "next/font/google";
-import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
 import ToastHost from "@/components/layout/ToastHost";
 import "./globals.css";
 
@@ -37,16 +35,14 @@ export const metadata: Metadata = {
     "Karanyé is a Nigerian fashion label creating distinctive, made-to-order contemporary pieces.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${bodoniModa.variable} ${hankenGrotesk.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-canvas text-ink">
-        <Header />
-        <div className="flex flex-1 flex-col">{children}</div>
-        <Footer />
+        {children}
         <ToastHost />
       </body>
     </html>

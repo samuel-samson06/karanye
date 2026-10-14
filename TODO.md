@@ -34,11 +34,18 @@ Completion criteria: scripts executed without error; catalogue reads work anonym
 commerce tables deny anonymous access; admin role gates writes. Phase 1 completes
 only after execution + verification — files existing locally is not completion.
 
-## Phase 2 — Admin UI foundation — Status: Not Started
+## Phase 2 — Admin UI foundation — Status: In Progress (milestone 1)
 
 Objective: protected admin shell managing the Phase 1 schema.
-Tasks: admin layout/nav/protected routes; collections, products, images (+ordering),
-variants (size, colour, fulfilment, stock) management.
+- [x] Storefront moved to app/(storefront)/ (URLs unchanged); root layout slimmed
+- [x] Supabase packages installed (@supabase/ssr + @supabase/supabase-js); .env.example
+- [x] lib/supabase clients + trusted requireAdmin() (getUser + app_metadata)
+- [x] /admin/login (public), /admin/unauthorized (public), protected (protected) group
+- [x] Dashboard + products/collections skeleton routes (CRUD deferred)
+- [ ] Manual: .env.local values, product-images bucket, provision admin + role SQL,
+      sign out/in, verify gating live (anon → login, non-admin → unauthorized)
+- [ ] Next milestone: collections/products CRUD incl. images (+ordering) and
+      variants (size, colour, fulfilment, stock) management
 Dependencies: Phase 1 executed. Completion: CRUD works against live schema with role checks.
 
 ## Phase 3 — Storefront database integration — Status: Not Started
