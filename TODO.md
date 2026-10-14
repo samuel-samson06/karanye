@@ -1,38 +1,73 @@
 # Karanyé — Work Tracker
 
-Derived from `PROJECT.md` (build phases §16, open decisions §17) and `AGENTS.md`.
-Updated at the end of every task. Source of truth for sequencing stays `PROJECT.md`.
+Sequencing source of truth: this file. Design/architecture source of truth:
+`PROJECT.md`. Agent working rules: `AGENT.md`.
 
-## Now
+## Completed foundation (storefront UI, dummy data)
 
 - [x] Home Page shell (layout, nav split, sections, dummy data, routes)
 - [x] Route placeholders for header links + `/products/[slug]`
-- [x] Shop page UI (dummy data, no backend)
-  - [x] Install `sweetalert2` + `react-toastify` (approved)
-  - [x] `lib/data/shop.ts` catalogue
-  - [x] `components/reusable/ProductCard.tsx` (dead Add to Bag → toast only)
-  - [x] `components/shop/Filter.tsx` + `ProductList.tsx` (client filters, pagination)
-  - [x] `components/shop/Guarantee.tsx` + `SizingHelp.tsx` bands
-  - [x] `app/shop/page.tsx` composition rewrite
-  - [x] ToastContainer wiring + Toastify CSS overrides (radius 0, no shadow, tokens)
-- [x] Fix leftover `BagPage` name in shop placeholder (absorbed by rewrite above)
-- [x] About page (4 sections, copy inline per convention, screenshot placeholders)
-- [x] Contact page (InfoSection + FormSection with dead submit → toast, guidance inline)
+- [x] Shop page UI (dummy data, no backend) + toast wiring (`sweetalert2` + `react-toastify` installed; SWAL unused)
+- [x] About page (4 sections, copy inline) + Contact page (InfoSection + FormSection, dead submit)
 - [x] Hero slider (ScrollImages: 5s autoplay, no drag/controls, reduced-motion static)
-- [x] Dissolved lib/data/home.ts (copy inline per convention; formatNaira → lib/money.ts; navLinks → Navigation props)
-- [x] Trimmed lib/data/shop.ts to products only (facets → Filter, copy → page/bands)
+- [x] Dissolved `lib/data/home.ts`; trimmed `lib/data/shop.ts` to products only (`lib/money.ts`, Navigation props)
 
-## Next (in phase order, one phase at a time with review)
+## Phase 1 — Database foundation: tables and RLS — Status: In Progress
 
-- [ ] Phase 2 — Catalogue: schema + migrations, RLS, storage bucket, Shop (search
-      params + Postgres), design detail page, drawers. Needs: product detail design (§17)
-- [ ] Phase 3 — Admin: products (auth + role checks, CRUD, images, sizes/stock)
-- [ ] Phase 4 — Content pages: About, Size & Fit, Made to Measure, Contact + API,
-      Private List + API
-- [ ] Phase 5 — Bag/shop drawer + checkout + Paystack + emails. BLOCKED on delivery (§17)
-- [ ] Phase 6 — Admin: orders, waitlist CSV, Order Lookup (consider ticket-style
-      progress timeline UI for the lookup result)
-- [ ] Phase 7 — Operations + launch (keep-alive, backups, a11y pass, full QA)
+Objective: approved table structures + RLS in reviewable SQL, executed and verified in Dashboard.
+
+- [x] `sql/01_core_schema.sql` created (tables, keys, constraints, indexes — no functions/triggers)
+- [x] `sql/02_rls_policies.sql` created (grants, RLS, `available_variants` view, Storage policies)
+- [x] Schema correction: dropped speculative product fields (`fit`, `model_info`,
+      `mtm_extra_fields`); status kept as merchandising label (fulfilment on
+      variants); images use `image_url` + optional alt; variant size nullable;
+      standard order items no longer require a size snapshot
+- [x] Schema correction 2: dropped `production_time_days` (timelines undefined)
+      and deferred `mtm_surcharge_kobo` (no MTM pricing policy yet); kept
+      `mtm_available` + `measurements` snapshot; no replacement pricing fields
+- [ ] Review both files (done by author in-task; independent review pending)
+- [ ] Execute 01 then 02 in Supabase Dashboard SQL Editor (manual step — NOT done)
+- [ ] Verify tables, constraints, and RLS behaviour in Dashboard (manual step — NOT done)
+
+Dependencies: §17 open decisions that shape copy/content (not schema-blocking).
+Completion criteria: scripts executed without error; catalogue reads work anonymously;
+commerce tables deny anonymous access; admin role gates writes. Phase 1 completes
+only after execution + verification — files existing locally is not completion.
+
+## Phase 2 — Admin UI foundation — Status: Not Started
+
+Objective: protected admin shell managing the Phase 1 schema.
+Tasks: admin layout/nav/protected routes; collections, products, images (+ordering),
+variants (size, colour, fulfilment, stock) management.
+Dependencies: Phase 1 executed. Completion: CRUD works against live schema with role checks.
+
+## Phase 3 — Storefront database integration — Status: Not Started
+
+Objective: dummy data replaced with live catalogue reads.
+Tasks: collections/products/images/variants queries; catalogue filtering; newsletter
+and complaint submissions via validated handlers.
+Dependencies: Phases 1–2. Completion: shop renders from DB; subscriptions/complaints persist.
+
+## Phase 4 — Cart and order creation — Status: Not Started
+
+Objective: guest checkout producing snapshot-faithful orders.
+Tasks: cart + checkout workflow; orders/items creation; secure order lookup; admin order needs.
+Dependencies: Phases 1, 3. Completion: pending_payment orders with correct snapshots; lookup works.
+
+## Phase 5 — Payments and transactional logic — Status: Not Started
+
+Objective: Paystack money movement with safe confirmation.
+Tasks: initialization + server verification; confirmation + inventory updates;
+idempotency, shortages, reconciliation; refunds.
+Dependencies: Phases 1, 4. Blocked on delivery decision (§17).
+Completion: paid orders decremented exactly once; replays harmless; shortages surfaced.
+
+## Phase 6 — Fulfilment, communication, hardening — Status: Not Started
+
+Objective: production workflow, emails, and launch readiness.
+Tasks: fulfilment transitions; transactional emails; order history actions;
+security/error/deployment/E2E QA.
+Dependencies: Phases 4–5. Completion: full QA pass on mobile/tablet/desktop.
 
 ## Blocked — open decisions (PROJECT.md §17, do not implement until resolved)
 
@@ -47,15 +82,16 @@ Updated at the end of every task. Source of truth for sequencing stays `PROJECT.
 
 ## Exceptions log (user decisions overriding the spec)
 
+- `sql/` root folder + manual Dashboard execution (overrides AGENTS.md §3 CLI workflow).
 - Bag → Shop conversion: header bag icon is a Shop icon → `/shop`;
   `app/bag/` removed; Phase 5 "bag drawer/page" to be re-scoped as shop drawer/page.
-- `sweetalert2` installed but UNUSED — first use deferred (candidate: Phase 5
-  checkout confirmations). Must be token-styled (`customClass`) to meet radius-0 /
-  no-shadow rules when first used.
-- Dead Add to Bag button fires a placeholder toast only (no cart state until Phase 5).
+- `sweetalert2` installed but UNUSED — first use deferred. Must be token-styled
+  (`customClass`) to meet radius-0 / no-shadow rules when first used.
+- Reviews table deferred (PROJECT.md §18 out-of-scope wins over earlier plan).
+- `paid` order state replaced by payment/fulfilment split (`payments.status` +
+  fulfilment-only `orders.status` incl. `awaiting_fulfilment`, `requires_attention`).
 
 ## Design review queue
 
-- Home built from screenshot (no Stitch file in repo)
-- Shop built from screenshot; badge wording uses canonical §3.7 tokens, screenshot's
-  "LIMITED ATELIER RUN" / "IN STOCK / ATELIER" not implemented
+- Home + Shop built from screenshots (no Stitch file in repo); About + Contact same
+- Shop badge wording uses canonical §3.7 tokens; screenshot variants not implemented
