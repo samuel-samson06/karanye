@@ -46,6 +46,8 @@ Objective: protected admin shell managing the Phase 1 schema.
       subscribers (+ provisional reviews page, no table) with sidebar links
 - [x] Phase A dashboard (mock data + KPIs + queue + top products + complaints;
       verified profitable-excluded math at runtime; Phase B live data pending)
+- [x] Products page UI (mock catalogue, stats, toolbar, table, pagination;
+      runtime-verified: 5 pieces, 3 low-stock variants, ₦4,140,000; CRUD pending)
 - [ ] Manual: .env.local values, product-images bucket, provision admin + role SQL,
       sign out/in, verify gating live (anon → login, non-admin → unauthorized)
 - [ ] Next milestone: collections/products CRUD incl. images (+ordering) and
