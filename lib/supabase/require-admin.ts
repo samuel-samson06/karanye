@@ -1,3 +1,4 @@
+import { connection } from "next/server";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 
@@ -7,6 +8,10 @@ import { createClient } from "@/lib/supabase/server";
 // page, Server Action, and admin Route Handler BEFORE any data access.
 // Redirects: anonymous → /admin/login, authed non-admin → /admin/unauthorized.
 export async function requireAdmin() {
+  // Per-request rendering only: Supabase Auth reads the clock (Date.now())
+  // on session paths, which aborts static prerendering. This opts the
+  // enclosing route out of prerendering before any auth code runs.
+  await connection();
   const supabase = await createClient();
   const {
     data: { user },

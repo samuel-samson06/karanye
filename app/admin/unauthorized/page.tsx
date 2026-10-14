@@ -17,12 +17,12 @@ export default function AdminUnauthorizedPage() {
         have access, contact the atelier to review your account role.
       </p>
       <div className="mt-8 flex flex-col gap-3">
-        <Link
+        {/* <Link
           href="/admin/login"
           className="inline-flex h-[52px] min-h-11 items-center justify-center bg-crimson text-label-md text-canvas transition-colors hover:bg-crimson-deep"
         >
           Sign In
-        </Link>
+        </Link> */}
         <Link
           href="/"
           className="editorial-link text-label-md text-crimson"
