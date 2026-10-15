@@ -34,7 +34,10 @@ CREATE INDEX IF NOT EXISTS collections_visible_sort_idx
   ON collections (is_visible, sort_order);
 
 -- ----------------------------------------------------------------------------
--- Products: every product belongs to exactly one collection.
+-- Products: catalogue records. collection_id is NULLABLE: a selected
+-- collection stores its UUID; NULL means a standalone piece (never a fake
+-- "Standalone" collection). The foreign key and ON DELETE RESTRICT behaviour
+-- are preserved.
 -- Focused on describing, publishing, pricing, and selling: no model info,
 -- fit classification, or generic extra-measurement columns (no documented
 -- requirement for them).
@@ -49,7 +52,7 @@ CREATE INDEX IF NOT EXISTS collections_visible_sort_idx
 -- ----------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS products (
   id                   uuid        PRIMARY KEY DEFAULT gen_random_uuid(),
-  collection_id        uuid        NOT NULL REFERENCES collections (id) ON DELETE RESTRICT,
+  collection_id        uuid        REFERENCES collections (id) ON DELETE RESTRICT,
   name                 text        NOT NULL,
   slug                 text        NOT NULL UNIQUE,
   description          text,
@@ -113,6 +116,9 @@ CREATE TABLE IF NOT EXISTS product_variants (
   sku            text        UNIQUE,
   fulfilment_type text       NOT NULL
     CHECK (fulfilment_type IN ('ready_made', 'made_to_order')),
+  price_kobo       integer     CHECK (price_kobo IS NULL OR price_kobo >= 0),
+  -- Optional override: NULL inherits products.price_kobo (effective price =
+  -- variant.price_kobo ?? product.price_kobo).
   stock_quantity integer     CHECK (stock_quantity IS NULL OR stock_quantity >= 0),
   is_active      boolean     NOT NULL DEFAULT true,
   created_at     timestamptz NOT NULL DEFAULT now(),

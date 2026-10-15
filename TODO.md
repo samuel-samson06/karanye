@@ -48,6 +48,8 @@ Objective: protected admin shell managing the Phase 1 schema.
       verified profitable-excluded math at runtime; Phase B live data pending)
 - [x] Products page UI (mock catalogue, stats, toolbar, table, pagination;
       runtime-verified: 5 pieces, 3 low-stock variants, ₦4,140,000; CRUD pending)
+- [x] Create Piece workflow (form + validation + save actions; live DB/Storage
+      verification pending — run sql/04 + confirm bucket, then test live)
 - [ ] Manual: .env.local values, product-images bucket, provision admin + role SQL,
       sign out/in, verify gating live (anon → login, non-admin → unauthorized)
 - [ ] Next milestone: collections/products CRUD incl. images (+ordering) and
