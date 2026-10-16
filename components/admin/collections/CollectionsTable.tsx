@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   getMockPieceCount,
@@ -60,10 +59,10 @@ export default function CollectionsTable({ collections }: CollectionsTableProps)
 
   return (
     <div className="overflow-x-auto border border-platinum">
-      <table className="w-full min-w-[880px] border-collapse bg-canvas text-left">
+      <table className="w-full min-w-[640px] border-collapse bg-canvas text-left">
         <thead>
           <tr className="border-b border-platinum">
-            {["Collection", "Slug", "Description", "Pieces", "Visibility", "Actions"].map(
+            {["Collection", "Description", "Pieces", "Visibility"].map(
               (heading) => (
                 <th
                   key={heading}
@@ -108,7 +107,6 @@ export default function CollectionsTable({ collections }: CollectionsTableProps)
                   <span className="text-body-md text-ink">{collection.name}</span>
                 </span>
               </td>
-              <td className="px-4 py-3 text-body-sm text-muted">{collection.slug}</td>
               <td className="max-w-xs px-4 py-3">
                 {collection.description ? (
                   <span className="block truncate text-body-md text-muted">
@@ -132,15 +130,6 @@ export default function CollectionsTable({ collections }: CollectionsTableProps)
                 >
                   {collection.isVisible ? "Visible" : "Hidden"}
                 </span>
-              </td>
-              <td className="px-4 py-3">
-                <Link
-                  href={`/admin/collections/${collection.id}`}
-                  aria-label={`View ${collection.name}`}
-                  className="editorial-link text-label-md text-crimson"
-                >
-                  View
-                </Link>
               </td>
             </tr>
           ))}

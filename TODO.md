@@ -59,6 +59,9 @@ Objective: protected admin shell managing the Phase 1 schema.
       sql/01-02 executed + product-images bucket confirmed)
 - [x] Collections list UI (separate mock catalogue, derived piece counts,
       visibility/description/cover branches; CRUD pending)
+- [x] Orders + payments experience (enriched mocks incl. MTM item, delivery
+      snapshots, timestamps, events; lists with search/filter, detail routes;
+      formulas + relationships runtime-verified; live reads pending)
 - [ ] Manual: .env.local values, product-images bucket, provision admin + role SQL,
       sign out/in, verify gating live (anon → login, non-admin → unauthorized)
 - [ ] Next milestone: collections/products CRUD incl. images (+ordering) and
