@@ -55,6 +55,10 @@ Objective: protected admin shell managing the Phase 1 schema.
       verification pending)
 - [x] Mock-only edit flow ([id] resolves mock catalogue, session-state save +
       reset, no Supabase; stats unchanged: 5 / 3 / ₦4,140,000)
+- [x] Collection creation (form + validation + save action; live run needs
+      sql/01-02 executed + product-images bucket confirmed)
+- [x] Collections list UI (separate mock catalogue, derived piece counts,
+      visibility/description/cover branches; CRUD pending)
 - [ ] Manual: .env.local values, product-images bucket, provision admin + role SQL,
       sign out/in, verify gating live (anon → login, non-admin → unauthorized)
 - [ ] Next milestone: collections/products CRUD incl. images (+ordering) and
