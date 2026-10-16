@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import ImagePicker, { type PickedImage } from "@/components/admin/products/ImagePicker";
+import ImagePicker, { type EditableImage } from "@/components/admin/products/ImagePicker";
 import VariantEditor from "@/components/admin/products/VariantEditor";
 import { formatNaira } from "@/lib/money";
 import {
@@ -61,7 +61,7 @@ export default function CreatePieceForm({
   const [mtmAvailable, setMtmAvailable] = useState(false);
   const [hasVariants, setHasVariants] = useState(false);
   const [variants, setVariants] = useState<VariantInput[]>([]);
-  const [images, setImages] = useState<PickedImage[]>([]);
+  const [images, setImages] = useState<EditableImage[]>([]);
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [variantErrors, setVariantErrors] = useState<Record<number, FieldErrors>>({});
   const [submitting, setSubmitting] = useState(false);
@@ -112,7 +112,11 @@ export default function CreatePieceForm({
           images: images.map((image) => ({ alt: image.alt, isPrimary: image.isPrimary })),
         })
       );
-      for (const image of images) formData.append("files", image.file);
+      for (const image of images) {
+        // Create flow only ever holds picked files; the guard keeps the
+        // shared EditableImage type honest.
+        if (image.file) formData.append("files", image.file);
+      }
       const outcome = await createPieceAction(formData);
       setResult(outcome);
       if (outcome.productId && !outcome.ok) setCreatedId(outcome.productId);

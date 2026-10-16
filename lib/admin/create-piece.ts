@@ -18,6 +18,8 @@ export interface CollectionOption {
 }
 
 export interface VariantInput {
+  /** Database row id when editing an existing variant; absent for new rows. */
+  id?: string;
   sizeLabel: string | null;
   colour: string | null;
   /** NGN display string, "" = inherit base price. */

@@ -50,6 +50,11 @@ Objective: protected admin shell managing the Phase 1 schema.
       runtime-verified: 5 pieces, 3 low-stock variants, ₦4,140,000; CRUD pending)
 - [x] Create Piece workflow (form + validation + save actions; live DB/Storage
       verification pending — run sql/04 + confirm bucket, then test live)
+- [x] Edit Piece workflow ([id] loads + saves details/images/variants with
+      per-step honest reporting; Storage objects never deleted; live
+      verification pending)
+- [x] Mock-only edit flow ([id] resolves mock catalogue, session-state save +
+      reset, no Supabase; stats unchanged: 5 / 3 / ₦4,140,000)
 - [ ] Manual: .env.local values, product-images bucket, provision admin + role SQL,
       sign out/in, verify gating live (anon → login, non-admin → unauthorized)
 - [ ] Next milestone: collections/products CRUD incl. images (+ordering) and

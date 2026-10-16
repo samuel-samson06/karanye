@@ -134,7 +134,7 @@ export default function VariantEditor({
           or leave this piece variant-free.
         </p>
       ) : (
-        <ul className="flex flex-col gap-4">
+        <ul className="flex flex-col gap-4 ">
           {variants.map((row, index) => {
             const rowErrors = errors[index] ?? {};
             const effective =
@@ -189,12 +189,12 @@ export default function VariantEditor({
                       className="h-12 min-h-11 w-full border border-hairline bg-canvas px-3 text-body-sm text-ink placeholder:text-muted focus:border-crimson focus:outline-none"
                     />
                   </div>
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-2 ">
                     <label
                       htmlFor={`variant-price-${index}`}
                       className="text-label-md text-muted"
                     >
-                      Price override (optional)
+                      Price (optional)
                     </label>
                     <input
                       id={`variant-price-${index}`}
@@ -206,7 +206,7 @@ export default function VariantEditor({
                       className="h-12 min-h-11 w-full border border-hairline bg-canvas px-3 text-body-sm text-ink placeholder:text-muted focus:border-crimson focus:outline-none"
                     />
                   </div>
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-2 ">
                     <label
                       htmlFor={`variant-sku-${index}`}
                       className="text-label-md text-muted"
@@ -221,14 +221,14 @@ export default function VariantEditor({
                       className="h-12 min-h-11 w-full border border-hairline bg-canvas px-3 text-body-sm text-ink placeholder:text-muted focus:border-crimson focus:outline-none"
                     />
                   </div>
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-3 ">
                     <span id={`variant-fulfil-${index}`} className="text-label-md text-muted">
                       Fulfilment
                     </span>
                     <div
                       role="group"
                       aria-labelledby={`variant-fulfil-${index}`}
-                      className="grid grid-cols-2 gap-2"
+                      className="grid grid-cols-2 gap-3"
                     >
                       {(
                         [
@@ -243,14 +243,18 @@ export default function VariantEditor({
                             aria-pressed={row.fulfilment === value}
                             className={
                               row.fulfilment === value
-                                ? "min-h-11 border border-crimson bg-crimson px-3 py-2 text-label-md text-canvas"
-                                : "min-h-11 border border-platinum px-3 py-2 text-label-md text-ink transition-colors hover:border-ink"
+                                ? "min-h-12 border border-crimson bg-crimson px-4 py-3 text-label-md text-canvas"
+                                : "min-h-12 border border-platinum px-4 py-3 text-label-md text-ink transition-colors hover:border-ink"
                             }
                           >
                             {label}
                           </button>
                         ))}
                       </div>
+                      <p className="text-body-sm text-muted">
+                        Ready-made tracks stock on hand. Made to Order produces
+                        each piece after purchase.
+                      </p>
                   </div>
                   <div className="flex flex-col gap-2">
                     <label

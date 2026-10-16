@@ -32,6 +32,8 @@ export interface MockAdminVariant {
   fulfilmentType: MockAdminFulfilment;
   /** NULL for made-to-order (never counted); non-negative for ready-made. */
   stockQuantity: number | null;
+  /** NULL inherits the product base price; set for a variant override. */
+  priceKobo: number | null;
   isActive: boolean;
 }
 
@@ -67,9 +69,9 @@ export const mockAdminProducts: MockAdminProduct[] = [
       { imageUrl: "/images/style_01.jpeg", alt: "Crimson sculpted gown, front view", isPrimary: true },
     ],
     variants: [
-      { sizeLabel: "M", colour: "Crimson", fulfilmentType: "ready_made", stockQuantity: 4, isActive: true },
-      { sizeLabel: "L", colour: "Crimson", fulfilmentType: "ready_made", stockQuantity: 2, isActive: true },
-      { sizeLabel: "S", colour: "Crimson", fulfilmentType: "made_to_order", stockQuantity: null, isActive: true },
+      { sizeLabel: "M", colour: "Crimson", fulfilmentType: "ready_made", stockQuantity: 4, priceKobo: null, isActive: true },
+      { sizeLabel: "L", colour: "Crimson", fulfilmentType: "ready_made", stockQuantity: 2, priceKobo: 36000000, isActive: true },
+      { sizeLabel: "S", colour: "Crimson", fulfilmentType: "made_to_order", stockQuantity: null, priceKobo: null, isActive: true },
     ],
     updatedAt: "2026-10-10T13:15:00Z",
   },
@@ -85,8 +87,8 @@ export const mockAdminProducts: MockAdminProduct[] = [
       { imageUrl: "/images/style_05.jpeg", alt: "Bronze draped silk trench", isPrimary: true },
     ],
     variants: [
-      { sizeLabel: "M", colour: "Bronze", fulfilmentType: "made_to_order", stockQuantity: null, isActive: true },
-      { sizeLabel: "L", colour: "Bronze", fulfilmentType: "made_to_order", stockQuantity: null, isActive: true },
+      { sizeLabel: "M", colour: "Bronze", fulfilmentType: "made_to_order", stockQuantity: null, priceKobo: null, isActive: true },
+      { sizeLabel: "L", colour: "Bronze", fulfilmentType: "made_to_order", stockQuantity: null, priceKobo: null, isActive: true },
     ],
     updatedAt: "2026-10-08T11:22:00Z",
   },
@@ -102,9 +104,9 @@ export const mockAdminProducts: MockAdminProduct[] = [
       { imageUrl: "/images/style_03.jpeg", alt: "Black split-sleeve cape blazer", isPrimary: true },
     ],
     variants: [
-      { sizeLabel: "10", colour: "Noir", fulfilmentType: "ready_made", stockQuantity: 3, isActive: true },
-      { sizeLabel: "12", colour: "Noir", fulfilmentType: "ready_made", stockQuantity: 0, isActive: true },
-      { sizeLabel: "8", colour: "Noir", fulfilmentType: "ready_made", stockQuantity: 1, isActive: false },
+      { sizeLabel: "10", colour: "Noir", fulfilmentType: "ready_made", stockQuantity: 3, priceKobo: null, isActive: true },
+      { sizeLabel: "12", colour: "Noir", fulfilmentType: "ready_made", stockQuantity: 0, priceKobo: null, isActive: true },
+      { sizeLabel: "8", colour: "Noir", fulfilmentType: "ready_made", stockQuantity: 1, priceKobo: null, isActive: false },
     ],
     updatedAt: "2026-10-02T09:05:00Z",
   },
@@ -120,8 +122,8 @@ export const mockAdminProducts: MockAdminProduct[] = [
       { imageUrl: "/images/style_07.jpeg", alt: "Ivory pleated two-piece ensemble", isPrimary: true },
     ],
     variants: [
-      { sizeLabel: "8", colour: "Ivory", fulfilmentType: "ready_made", stockQuantity: 6, isActive: true },
-      { sizeLabel: "10", colour: "Ivory", fulfilmentType: "made_to_order", stockQuantity: null, isActive: true },
+      { sizeLabel: "8", colour: "Ivory", fulfilmentType: "ready_made", stockQuantity: 6, priceKobo: null, isActive: true },
+      { sizeLabel: "10", colour: "Ivory", fulfilmentType: "made_to_order", stockQuantity: null, priceKobo: null, isActive: true },
     ],
     updatedAt: "2026-10-09T16:47:00Z",
   },
@@ -149,7 +151,7 @@ export const mockAdminProducts: MockAdminProduct[] = [
       { imageUrl: "/images/style_02.jpeg", alt: "Forest green floor-length kaftan", isPrimary: true },
     ],
     variants: [
-      { sizeLabel: "M", colour: "Forest", fulfilmentType: "ready_made", stockQuantity: 2, isActive: true },
+      { sizeLabel: "M", colour: "Forest", fulfilmentType: "ready_made", stockQuantity: 2, priceKobo: null, isActive: true },
     ],
     updatedAt: "2026-08-14T10:00:00Z",
   },

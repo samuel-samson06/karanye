@@ -6,29 +6,63 @@ import {
   MAX_IMAGE_BYTES,
 } from "@/lib/admin/create-piece";
 
-export interface PickedImage {
+export interface InitialImage {
   id: string;
-  file: File;
-  preview: string;
+  url: string;
+  alt: string;
+  isPrimary: boolean;
+}
+
+export interface EditableImage {
+  key: string;
+  /** Database row id for existing images; null for newly picked files. */
+  existingId: string | null;
+  file: File | null;
+  /** Existing image_url or a local object URL for new files. */
+  src: string;
   alt: string;
   isPrimary: boolean;
 }
 
 interface ImagePickerProps {
-  onChange: (images: PickedImage[]) => void;
+  /** Existing rows (edit flow). Omit for create flow. */
+  initial?: InitialImage[];
+  /** Show up/down ordering controls (edit flow). */
+  orderable?: boolean;
+  onChange: (images: EditableImage[]) => void;
 }
 
 function formatSize(bytes: number): string {
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
-// Multi-image picker: previews are local object URLs (never uploaded until
-// save). Owns file state; reports the list up for submission.
-export default function ImagePicker({ onChange }: ImagePickerProps) {
-  const [images, setImages] = useState<PickedImage[]>([]);
+function newKey(): string {
+  return typeof crypto.randomUUID === "function"
+    ? crypto.randomUUID()
+    : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+}
+
+// Image manager: previews are existing URLs or local object URLs (new files
+// are never uploaded until save). Reports the unified ordered list up;
+// the parent derives new files, kept rows, and removed row ids from it.
+export default function ImagePicker({
+  initial = [],
+  orderable = false,
+  onChange,
+}: ImagePickerProps) {
+  const [images, setImages] = useState<EditableImage[]>(() =>
+    initial.map((row) => ({
+      key: `existing:${row.id}`,
+      existingId: row.id,
+      file: null,
+      src: row.url,
+      alt: row.alt,
+      isPrimary: row.isPrimary,
+    }))
+  );
   const [error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const latestRef = useRef<PickedImage[]>([]);
+  const latestRef = useRef<EditableImage[]>([]);
 
   useEffect(() => {
     latestRef.current = images;
@@ -36,18 +70,18 @@ export default function ImagePicker({ onChange }: ImagePickerProps) {
   }, [images, onChange]);
 
   useEffect(() => {
-    // Revoke previews on unmount so nothing leaks.
+    // Revoke local previews on unmount so nothing leaks.
     return () => {
-      latestRef.current.forEach((image) =>
-        URL.revokeObjectURL(image.preview)
-      );
+      latestRef.current.forEach((image) => {
+        if (image.file) URL.revokeObjectURL(image.src);
+      });
     };
   }, []);
 
   const addFiles = (files: FileList | null): void => {
     if (!files) return;
     setError(null);
-    const accepted: PickedImage[] = [];
+    const accepted: EditableImage[] = [];
     for (const file of Array.from(files)) {
       if (!ACCEPTED_IMAGE_TYPES.includes(file.type)) {
         setError(`"${file.name}" is not a JPEG, PNG, or WebP file.`);
@@ -60,12 +94,10 @@ export default function ImagePicker({ onChange }: ImagePickerProps) {
         continue;
       }
       accepted.push({
-        id:
-          typeof crypto.randomUUID === "function"
-            ? crypto.randomUUID()
-            : `${Date.now()}-${file.name}`,
+        key: newKey(),
+        existingId: null,
         file,
-        preview: URL.createObjectURL(file),
+        src: URL.createObjectURL(file),
         alt: "",
         isPrimary: false,
       });
@@ -83,22 +115,22 @@ export default function ImagePicker({ onChange }: ImagePickerProps) {
     if (inputRef.current) inputRef.current.value = "";
   };
 
-  const update = (id: string, patch: Partial<PickedImage>): void =>
+  const update = (key: string, patch: Partial<EditableImage>): void =>
     setImages((current) =>
       current.map((image) =>
         patch.isPrimary === true
-          ? { ...image, ...{ isPrimary: image.id === id } }
-          : image.id === id
+          ? { ...image, isPrimary: image.key === key }
+          : image.key === key
             ? { ...image, ...patch }
             : image
       )
     );
 
-  const remove = (id: string): void =>
+  const remove = (key: string): void =>
     setImages((current) => {
-      const target = current.find((image) => image.id === id);
-      if (target) URL.revokeObjectURL(target.preview);
-      const next = current.filter((image) => image.id !== id);
+      const target = current.find((image) => image.key === key);
+      if (target?.file) URL.revokeObjectURL(target.src);
+      const next = current.filter((image) => image.key !== key);
       if (
         target?.isPrimary &&
         next.length > 0 &&
@@ -106,6 +138,17 @@ export default function ImagePicker({ onChange }: ImagePickerProps) {
       ) {
         next[0] = { ...next[0], isPrimary: true };
       }
+      return next;
+    });
+
+  const move = (key: string, direction: -1 | 1): void =>
+    setImages((current) => {
+      const from = current.findIndex((image) => image.key === key);
+      const to = from + direction;
+      if (from < 0 || to < 0 || to >= current.length) return current;
+      const next = [...current];
+      const [moved] = next.splice(from, 1);
+      next.splice(to, 0, moved);
       return next;
     });
 
@@ -145,12 +188,12 @@ export default function ImagePicker({ onChange }: ImagePickerProps) {
         <ul className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3">
           {images.map((image, position) => (
             <li
-              key={image.id}
+              key={image.key}
               className="border border-platinum bg-canvas p-3"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={image.preview}
+                src={image.src}
                 alt={image.alt.trim() === "" ? "Selected product image" : image.alt}
                 className="aspect-[3/4] w-full object-cover"
               />
@@ -160,35 +203,63 @@ export default function ImagePicker({ onChange }: ImagePickerProps) {
               <label className="mt-2 flex min-h-11 cursor-pointer items-center gap-3 text-label-md text-ink">
                 <input
                   type="radio"
-                  name="primary-image"
+                  name={`primary-image-${orderable ? "edit" : "new"}`}
                   checked={image.isPrimary}
-                  onChange={() => update(image.id, { isPrimary: true })}
+                  onChange={() => update(image.key, { isPrimary: true })}
                   className="h-4 w-4 accent-crimson"
                 />
                 Primary
               </label>
               <label
-                htmlFor={`alt-${image.id}`}
+                htmlFor={`alt-${image.key}`}
                 className="mt-2 block text-label-md text-muted"
               >
                 Alt text (optional)
               </label>
               <input
-                id={`alt-${image.id}`}
+                id={`alt-${image.key}`}
                 type="text"
                 value={image.alt}
-                onChange={(event) => update(image.id, { alt: event.target.value })}
+                onChange={(event) => update(image.key, { alt: event.target.value })}
                 placeholder="Falls back to product name"
                 className="mt-1 h-12 min-h-11 w-full border border-hairline bg-canvas px-3 text-body-sm text-ink placeholder:text-muted focus:border-crimson focus:outline-none"
               />
-              <button
-                type="button"
-                onClick={() => remove(image.id)}
-                aria-label={`Remove ${image.file.name}`}
-                className="editorial-link mt-3 min-h-11 text-label-md text-crimson"
-              >
-                Remove
-              </button>
+              <div className="mt-3 flex items-center gap-4">
+                {orderable && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => move(image.key, -1)}
+                      disabled={position === 0}
+                      aria-label={`Move image ${position + 1} earlier`}
+                      className="flex min-h-11 min-w-11 items-center justify-center border border-platinum text-ink disabled:opacity-60"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M7 12V2M3.5 5.5L7 2l3.5 3.5" stroke="currentColor" strokeWidth="1" />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => move(image.key, 1)}
+                      disabled={position === images.length - 1}
+                      aria-label={`Move image ${position + 1} later`}
+                      className="flex min-h-11 min-w-11 items-center justify-center border border-platinum text-ink disabled:opacity-60"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M7 2v10M3.5 8.5L7 12l3.5-3.5" stroke="currentColor" strokeWidth="1" />
+                      </svg>
+                    </button>
+                  </>
+                )}
+                <button
+                  type="button"
+                  onClick={() => remove(image.key)}
+                  aria-label={`Remove image ${position + 1}`}
+                  className="editorial-link min-h-11 text-label-md text-crimson"
+                >
+                  Remove
+                </button>
+              </div>
             </li>
           ))}
         </ul>

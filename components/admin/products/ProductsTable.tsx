@@ -112,7 +112,7 @@ export default function ProductsTable({ products }: ProductsTableProps) {
                 aria-label={`Open ${product.name}`}
                 onClick={(event) => handleRowClick(event, product.id)}
                 onKeyDown={(event) => handleRowKeyDown(event, product.id)}
-                className="cursor-pointer"
+                className="cursor-pointer transition-colors hover:bg-linen"
               >
                 <td className="px-4 py-3">
                   <span className="flex items-center gap-3">

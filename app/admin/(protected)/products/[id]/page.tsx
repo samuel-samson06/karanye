@@ -1,17 +1,24 @@
-// Product-edit skeleton — edit form (images, variants, archive) next milestone.
-export default function AdminProductEditPage() {
-  return (
-    <main>
-      <p className="text-label-md text-muted">Catalogue</p>
-      <h1
-        className="mt-3 text-display-lg text-ink"
-        style={{ fontFamily: "var(--font-bodoni)" }}
-      >
-        Edit Product
-      </h1>
-      <p className="mt-4 max-w-xl text-body-md text-muted">
-        TODO(admin): product edit form.
-      </p>
-    </main>
-  );
+import { notFound } from "next/navigation";
+import EditPieceForm from "@/components/admin/products/EditPieceForm";
+import { mockAdminProducts } from "@/lib/admin/products";
+
+interface EditPageProps {
+  params: Promise<{ id: string }>;
+}
+
+// Mock-only edit route: resolves the product from the dummy catalogue by the
+// same id ProductsTable navigates with. No Supabase anywhere in this flow.
+// Unknown ids use notFound(). Nothing here persists — the form holds edits
+// in component state for the session only.
+export function generateStaticParams(): { id: string }[] {
+  return mockAdminProducts.map((product) => ({ id: product.id }));
+}
+
+export default async function AdminProductEditPage({ params }: EditPageProps) {
+  const { id } = await params;
+  const product = mockAdminProducts.find((candidate) => candidate.id === id);
+
+  if (!product) notFound();
+
+  return <EditPieceForm initial={product} />;
 }
