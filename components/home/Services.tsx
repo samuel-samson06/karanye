@@ -18,8 +18,6 @@ const mtm = {
   title: "Made to Measure",
   body: "Cut to your own measurements, submitted at purchase and kept with your order.",
   points: ["Your measurements", "Atelier review", "Personal fit"],
-  ctaLabel: "How it works",
-  ctaHref: "/made-to-measure",
 };
 
 // Two Pathways to Your Silhouette: Standard Size vs Made to Measure.
@@ -70,7 +68,7 @@ export default function Services() {
             <p className="mt-4 text-body-md text-canvas/85">
               {mtm.body}
             </p>
-            <ul className="mt-6 mb-8 flex flex-col gap-3">
+            <ul className="mt-6 flex flex-col gap-3">
               {mtm.points.map((point) => (
                 <li key={point} className="flex items-start gap-3 text-body-sm text-canvas">
                   <span aria-hidden="true" className="mt-2 inline-block h-1.5 w-1.5 shrink-0 bg-canvas" />
@@ -78,12 +76,11 @@ export default function Services() {
                 </li>
               ))}
             </ul>
-            <Link
-              href={mtm.ctaHref}
-              className="mt-auto inline-flex h-13 items-center justify-center bg-canvas text-label-md text-crimson transition-colors hover:bg-linen"
-            >
-              {mtm.ctaLabel}
-            </Link>
+            {/* Informational card: MTM enquiries flow through Contact since
+                the dedicated Made to Measure page was retired. */}
+            <p className="editorial-link text-label-md text-canvas/85">
+              Enquire via Contact —
+            </p>
           </article>
         </div>
       </div>

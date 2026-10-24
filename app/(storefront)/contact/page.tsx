@@ -61,12 +61,11 @@ export default function ContactPage() {
                 directly to our Lagos master patternmakers for an exact
                 individual commission.
               </p>
-              <Link
-                href="/made-to-measure"
-                className="editorial-link mt-6 inline-block text-label-md text-ink"
-              >
-                Explore Made to Measure →
-              </Link>
+              {/* Enquiries flow through the form's Made to Measure type;
+                  the dedicated page has been retired. */}
+              <p className="editorial-link mt-6 text-label-md text-ink">
+                Enquire via the form below →
+              </p>
             </div>
           </div>
         </div>

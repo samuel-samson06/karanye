@@ -10,10 +10,10 @@ export interface NavLink {
 }
 
 const navLinks: NavLink[] = [
+  { label: "Home", href: "/" },
   { label: "Shop", href: "/shop" },
   { label: "About", href: "/about" },
   { label: "Size & Fit", href: "/size-fit" },
-  { label: "Made to Measure", href: "/made-to-measure" },
   { label: "Contact", href: "/contact" },
 ];
 

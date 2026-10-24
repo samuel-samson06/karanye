@@ -72,12 +72,6 @@ export default function Visit() {
             >
               Discover the Collection
             </Link>
-            <Link
-              href="/made-to-measure"
-              className="inline-flex h-13 items-center justify-center border border-ink px-8 text-label-md text-ink transition-colors hover:bg-ink hover:text-canvas"
-            >
-              Discover Made to Measure
-            </Link>
           </div>
         </div>
       </div>

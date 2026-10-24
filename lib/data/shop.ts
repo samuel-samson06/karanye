@@ -157,3 +157,8 @@ export const shopProducts: ShopProduct[] = [
     images: placeholderImages,
   },
 ];
+
+// Home preview grab: the first six pieces, in catalogue order, until the
+// Postgres catalogue decides what "latest" means.
+// TODO(content): replace with a real selection once Phase 3 lands.
+export const quickPreviewProducts = shopProducts.slice(0, 6);

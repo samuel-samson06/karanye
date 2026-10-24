@@ -11,6 +11,18 @@ Sequencing source of truth: this file. Design/architecture source of truth:
 - [x] About page (4 sections, copy inline) + Contact page (InfoSection + FormSection, dead submit)
 - [x] Hero slider (ScrollImages: 5s autoplay, no drag/controls, reduced-motion static)
 - [x] Dissolved `lib/data/home.ts`; trimmed `lib/data/shop.ts` to products only (`lib/money.ts`, Navigation props)
+- [x] Home "The Karanyé Edits" → "The Collections": 3 collection cards
+      (ink/45 name overlay, /collections/[slug] links) + new storefront
+      collection page reusing ProductList; dummy data mirrors admin mocks
+      (`lib/data/collections.ts`, category mapping is temporary)
+- [x] Home quick-products block: 6 latest pieces (`shop.ts` helper
+      `quickPreviewProducts`) in a shop-page-grid layout with status badges,
+      linking to /products/[slug]; dummy data, curated selection to revisit
+      in Phase 3
+- [x] Size & Fit: real standard size chart (sizes 4–22, brand-supplied data)
+      as stacked poster cards (`components/size-fit/SizeChartCard.tsx`,
+      `lib/data/size-chart.ts`), placeholder fabric image; size 4's stray
+      `armhole_length` normalized out
 
 ## Phase 1 — Database foundation: tables and RLS — Status: In Progress
 
@@ -117,6 +129,11 @@ Dependencies: Phases 4–5. Completion: full QA pass on mobile/tablet/desktop.
 - Reviews table deferred (PROJECT.md §18 out-of-scope wins over earlier plan).
 - `paid` order state replaced by payment/fulfilment split (`payments.status` +
   fulfilment-only `orders.status` incl. `awaiting_fulfilment`, `requires_attention`).
+- `/made-to-measure` page retired (user decision 2026-10): PROJECT.md §9 lists
+  it, but the route and its links (Footer, Contact card CTA, About Visit,
+  Services MTM card CTA, Guarantee CTA) are removed. MTM remains as a
+  purchase-level service via Contact enquiries and the future checkout drawer
+  (§12 untouched); admin/order MTM handling unaffected.
 
 ## Design review queue
 

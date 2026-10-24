@@ -1,12 +1,8 @@
-import Link from "next/link";
-
 // TODO(content): replace with approved atelier commitment copy.
 const eyebrow = "The atelier commitment";
 const title = "The Karanyé Made-to-Measure Guarantee";
 const body =
   "Every garment is patterned specifically to your anatomical proportions or tailored to standard UK sizes with complimentary hem adjustment and artisanal fitting consultations.";
-const ctaLabel = "Consult our atelier";
-const ctaHref = "/made-to-measure";
 
 // Atelier commitment band: guarantee statement with a secondary entry point.
 export default function Guarantee() {
@@ -21,12 +17,8 @@ export default function Guarantee() {
           <h2 className="mt-3 text-headline-md text-ink">{title}</h2>
           <p className="mt-3 text-body-md text-muted">{body}</p>
         </div>
-        <Link
-          href={ctaHref}
-          className="inline-flex h-[52px] min-h-11 shrink-0 items-center justify-center border border-ink px-8 text-label-md text-ink transition-colors hover:bg-ink hover:text-canvas"
-        >
-          {ctaLabel}
-        </Link>
+        {/* CTA retired with the Made to Measure page; atelier enquiries flow
+            through Contact. */}
       </div>
     </section>
   );

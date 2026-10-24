@@ -32,11 +32,6 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/made-to-measure" className="inline-flex min-h-11 items-center text-body-sm text-muted md:min-h-0">
-                <span className="editorial-link">Made to Measure</span>
-              </Link>
-            </li>
-            <li>
               <Link href="/size-fit" className="inline-flex min-h-11 items-center text-body-sm text-muted md:min-h-0">
                 <span className="editorial-link">Size &amp; Fit</span>
               </Link>
