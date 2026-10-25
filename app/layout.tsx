@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Bodoni_Moda, Geist, Geist_Mono, Hanken_Grotesk } from "next/font/google";
 import ToastHost from "@/components/layout/ToastHost";
+import CartDrawer from "@/components/cart/CartDrawer";
+import { CartProvider } from "@/lib/cart";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -42,7 +44,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${geistSans.variable} ${geistMono.variable} ${bodoniModa.variable} ${hankenGrotesk.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-canvas text-ink">
-        {children}
+        {/* Root-level provider: app/not-found.tsx renders the storefront
+           header outside the (storefront) group, so every route that draws
+           the nav chrome has the shared cart context. Admin never uses it. */}
+        <CartProvider>
+          {children}
+          <CartDrawer />
+        </CartProvider>
         <ToastHost />
       </body>
     </html>

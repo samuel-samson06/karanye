@@ -227,3 +227,27 @@ select {
   color: var(--color-muted);
   opacity: 1;
 }
+
+/* Drawer motion (§3.6): 200–400ms ease-out slides; the global
+   prefers-reduced-motion rule above neutralises these automatically. */
+@keyframes drawer-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+@keyframes drawer-in-bottom {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.drawer-panel-right {
+  animation: drawer-in-right 300ms ease-out;
+}
+/* Specification sheets sit right on desktop and rise from the bottom
+   near full-height on mobile (§3.7). */
+.drawer-panel-sheet {
+  animation: drawer-in-bottom 300ms ease-out;
+}
+@media (min-width: 768px) {
+  .drawer-panel-sheet {
+    animation: drawer-in-right 300ms ease-out;
+  }
+}

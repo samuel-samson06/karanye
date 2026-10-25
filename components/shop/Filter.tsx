@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import type { ShopCategory, ShopStatus } from "@/lib/data/shop";
+import { sizeChartOrder } from "@/lib/data/size-chart";
 
 // Filter option lists — single-use presentational data, kept with the filter.
 // TODO(content): replace with real catalogue facets in Phase 2.
@@ -13,7 +14,8 @@ const shopCategories: { value: ShopCategory | "all"; label: string }[] = [
   { value: "corsetry", label: "Corsetry & Bodices" },
 ];
 
-const shopSizes: string[] = ["6", "8", "10", "12", "14", "16", "18"];
+// Sizes follow the standard chart range every piece offers (4–22 UK).
+const shopSizes: string[] = sizeChartOrder.map(String);
 
 const shopPalettes: string[] = ["Crimson", "Noir", "Bronze", "Forest", "Ivory"];
 

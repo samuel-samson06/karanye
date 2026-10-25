@@ -23,6 +23,17 @@ Sequencing source of truth: this file. Design/architecture source of truth:
       as stacked poster cards (`components/size-fit/SizeChartCard.tsx`,
       `lib/data/size-chart.ts`), placeholder fabric image; size 4's stray
       `armhole_length` normalized out
+- [x] Product detail page(/products/[slug]): editorial 7/5 layout, gallery
+      carousel, fabric/care, related pieces; Standard Size tiles over the
+      full chart range 4–22 + Custom Size sheet reusing the nine
+      `sizeMeasurementKeys` fields; per-product `sizes` arrays retired and
+      the shop size facet updated to the chart range
+- [x] Shared cart (lib/cart.tsx: one CartProvider + localStorage
+      `karanye-cart`): right-slide CartDrawer from both nav bag icons
+      (total-units badge), merge on identical selection, separate lines for
+      differing size/measurements, qty/remove controls, disabled
+      "Checkout — opening soon"; `components/ui/Drawer.tsx` primitive added;
+      `ProductCard` untouched (dead toast kept per owner)
 
 ## Phase 1 — Database foundation: tables and RLS — Status: In Progress
 

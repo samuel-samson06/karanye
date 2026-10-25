@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useId, useRef } from "react";
 import logo from "@/public/images/logo.png";
 import type { NavLink } from "@/components/layout/Navigation";
+import { useCart } from "@/lib/cart";
 
 interface MobileMenuProps {
   links: NavLink[];
@@ -14,8 +15,11 @@ interface MobileMenuProps {
 }
 
 // Mobile navigation: hamburger opens a full-height overlay panel.
-// shop and Account stay visible in the bar at all times (§3.7).
+// The bag opens the shared cart drawer; Account stays visible in the bar
+// at all times (§3.7).
 export default function MobileMenu({ links, open, onClose, onOpen }: MobileMenuProps) {
+  const { count, openCart, loaded } = useCart();
+  const badge = loaded ? count : 0;
   const panelId = useId();
   const openButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -58,16 +62,20 @@ export default function MobileMenu({ links, open, onClose, onOpen }: MobileMenuP
       </Link>
 
       <div className="flex items-center gap-4">
-        <Link
-          href="/shop"
-          aria-label="Shopping shop"
+        <button
+          type="button"
+          onClick={openCart}
+          aria-label={`Open shop${badge > 0 ? `, ${badge} ${badge === 1 ? "piece" : "pieces"}` : ""}`}
           className="flex min-h-11 min-w-11 items-center justify-center text-ink"
         >
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
             <path d="M3 6h12l-1 11H4L3 6Z" stroke="currentColor" strokeWidth="1" />
             <path d="M6 6V5a3 3 0 0 1 6 0v1" stroke="currentColor" strokeWidth="1" />
           </svg>
-        </Link>
+          {badge > 0 && (
+            <span className="ml-1 text-body-sm text-crimson">{badge}</span>
+          )}
+        </button>
         {/* <Link
           href="/orders/lookup"
           aria-label="Account — order lookup"

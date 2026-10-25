@@ -1,15 +1,22 @@
-import Link from "next/link";
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
 import logo from "@/public/images/logo.png";
 import type { NavLink } from "@/components/layout/Navigation";
+import { useCart } from "@/lib/cart";
 
 interface DesktopNavProps {
   links: NavLink[];
 }
 
 // Desktop navigation: wordmark left, links centre, shop + Account right.
-// Hidden below lg; MobileMenu owns smaller screens.
+// The bag icon opens the shared cart drawer (units badge count); hidden
+// below lg, where MobileMenu owns the smaller screens.
 export default function DesktopNav({ links }: DesktopNavProps) {
+  const { count, openCart, loaded } = useCart();
+  const badge = loaded ? count : 0;
+
   return (
     <div className="hidden lg:flex items-center justify-between gap-8">
       <Link
@@ -34,10 +41,11 @@ export default function DesktopNav({ links }: DesktopNavProps) {
       </nav>
 
       <div className="flex items-center gap-6">
-        <Link
-          href="/shop"
+        <button
+          type="button"
+          onClick={openCart}
           className="editorial-link flex min-h-11 min-w-11 items-center gap-2 text-label-md text-ink"
-          aria-label="Shopping shop"
+          aria-label={`Open shop${badge > 0 ? `, ${badge} ${badge === 1 ? "piece" : "pieces"}` : ""}`}
         >
           <svg
             width="18"
@@ -57,9 +65,9 @@ export default function DesktopNav({ links }: DesktopNavProps) {
               strokeWidth="1"
             />
           </svg>
-          shop
-        </Link>
-        
+          cart{badge > 0 ? ` (${badge})` : ""}
+        </button>
+
       </div>
     </div>
   );

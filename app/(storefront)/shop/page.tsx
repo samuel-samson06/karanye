@@ -53,8 +53,9 @@ export default function ShopPage() {
     const list = shopProducts.filter((product) => {
       if (filters.category !== "all" && product.category !== filters.category)
         return false;
-      if (filters.size !== "all" && !product.sizes.includes(filters.size))
-        return false;
+      // Every piece offers the full standard chart range (4–22), so the size
+      // facet currently matches everything; stock-aware filtering arrives
+      // with Phase 3 data, so the control is kept for UI consistency.
       if (filters.palette !== "all" && product.palette !== filters.palette)
         return false;
       if (filters.status !== "all" && product.status !== filters.status)
