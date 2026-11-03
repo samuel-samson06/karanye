@@ -38,20 +38,35 @@ const tenets = [
 export default function Craft() {
   return (
     <section aria-label="What we believe" className="bg-canvas">
-      <div className="bg-crimson">
-        <blockquote className="mx-auto max-w-4xl px-5 py-14 text-center md:px-8 lg:py-20">
-          <p className="text-display-lg text-canvas">
-            &ldquo;We do not make garments for fleeting seasons. We draft
-            wearable architecture that honours the feminine posture and the
-            human hand.&rdquo;
-          </p>
-          <cite className="mt-6 block text-label-md text-canvas/70 not-italic">
-            The Karanyé Atelier
-          </cite>
-        </blockquote>
+      <div className="mx-auto max-w-7xl py-14  md:py-20 md:flex lg:py-24">
+        <div className="bg-crimson">
+            <cite className="mt-6 block text-label-md text-canvas/70 not-italic">
+              Mission
+            </cite>
+          <blockquote className="mx-auto max-w-4xl px-5 py-14 text-center md:px-8 lg:py-20">
+            <p className="text-display-lg text-canvas">
+              &ldquo;We do not make garments for fleeting seasons. We draft
+              wearable architecture that honours the feminine posture and the
+              human hand.&rdquo;
+            </p>
+          </blockquote>
+        </div>
+        <div className="bg-white">
+          <blockquote className="mx-auto max-w-4xl px-5 py-14 text-center md:px-8 lg:py-20">
+            <cite className="mt-6 block text-label-md text-canvas/70 not-italic">
+              Vision
+            </cite>
+            <p className="text-display-lg text-black">
+              &ldquo;We do not make garments for fleeting seasons. We draft
+              wearable architecture that honours the feminine posture and the
+              human hand.&rdquo;
+            </p>
+          </blockquote>
+        </div>
+
       </div>
 
-      <div className="mx-auto max-w-7xl px-5 py-14 md:px-8 md:py-20 lg:px-16 lg:py-24">
+      {/* <div className="mx-auto max-w-7xl px-5 py-14 md:px-8 md:py-20 lg:px-16 lg:py-24">
         <p className="text-label-md text-muted">Belief</p>
         <h2 className="mt-3 text-display-lg text-ink">
           The Three Tenets of Karanyé Form
@@ -92,7 +107,7 @@ export default function Craft() {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

@@ -48,7 +48,7 @@ export default function Visit() {
           ))}
         </ul>
 
-        <p className="mt-14 text-label-md text-muted lg:mt-16">Studios</p>
+        {/* <p className="mt-14 text-label-md text-muted lg:mt-16">Studios</p>
         <h2 className="mt-3 text-display-lg text-ink">
           Two Cities, One Architectural Vision
         </h2>
@@ -59,7 +59,7 @@ export default function Visit() {
               <p className="mt-3 text-body-md text-muted">{studio.body}</p>
             </li>
           ))}
-        </ul>
+        </ul> */}
 
         <div className="mt-14 border-t border-hairline pt-12 text-center lg:mt-16">
           <h2 className="mx-auto max-w-xl text-display-lg text-ink">

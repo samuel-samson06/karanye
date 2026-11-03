@@ -71,7 +71,7 @@ export default function Footer() {
       <div className="border-t border-platinum">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-5 sm:flex-row sm:items-center sm:justify-between md:px-8 lg:px-16">
           <p className="text-label-sm text-muted">© Karanyé. All rights reserved.</p>
-          <p className="text-label-sm text-muted">Lagos &amp; London</p>
+          <p className="text-label-sm text-muted">Lagos</p>
         </div>
       </div>
     </footer>

@@ -45,6 +45,10 @@ export const sizeChartNotes: string[] = [
 
 export type SizeChartRow = Record<SizeMeasurementKey["key"], string>;
 
+/** Named constant for the "Custom Size" tile that sits after the numeric
+ *  chart range in tile rows (never renders chart values of its own). */
+export const CUSTOM_SIZE_KEY = "CUSTOM";
+
 export const sizeChart: Record<number, SizeChartRow> = {
   4: {
     shoulder_width: '13"',

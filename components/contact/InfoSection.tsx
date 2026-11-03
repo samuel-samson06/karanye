@@ -15,7 +15,6 @@ export default function InfoSection() {
         <div className="mt-6">
           <p className="text-label-md text-muted">Direct atelier liaison / concierge WhatsApp</p>
           <p className="mt-2 text-body-md text-ink">+234 802 000 0000 (Lagos hub)</p>
-          <p className="mt-1 text-body-md text-ink">+44 20 7946 0000 (London suite)</p>
         </div>
 
         <div className="mt-6">
@@ -53,11 +52,7 @@ export default function InfoSection() {
                 Salon
               </span>
             </div>
-            <p className="mt-3 text-body-md text-muted">
-              28 Conduit Street, Mayfair
-              <br />
-              London W1S 2XD, United Kingdom
-            </p>
+            
             <p className="mt-3 text-label-md text-muted">Mon–Fri, 10:00–17:30 · Private reservation</p>
           </li>
         </ul>

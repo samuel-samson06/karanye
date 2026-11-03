@@ -36,7 +36,7 @@ export default function Story() {
           </p>
           <p className="mt-4 max-w-xl text-body-md text-muted">
             Nothing here is mass-produced. Each piece passes through the same
-            hands from first toile to final press, in Lagos and in London.
+            hands from first toile to final press, in Lagos.
           </p>
 
           <ol className="mt-10 flex flex-col gap-6 border-t border-hairline pt-8">

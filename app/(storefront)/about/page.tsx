@@ -6,7 +6,7 @@ import Visit from "@/components/about/Visit";
 export default function AboutPage() {
   return (
     <main>
-      <AboutHero />
+      {/* <AboutHero /> */}
       <Story />
       <Craft />
       <Visit />
